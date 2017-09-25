@@ -1,0 +1,6 @@
+# Spring app configurations
+spring:
+  data:
+    rest:
+      return-body-on-create: true # Return body when entity is created
+      return-body-on-update: true # Return body when entity is updated

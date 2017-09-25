@@ -22,10 +22,10 @@ group = 'kadet.dnd'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 compileKotlin {
-	kotlinOptions.jvmTarget = "1.8"
+	kotlinOptions.jvmTarget = '1.8'
 }
 compileTestKotlin {
-	kotlinOptions.jvmTarget = "1.8"
+	kotlinOptions.jvmTarget = '1.8'
 }
 
 repositories {
@@ -38,20 +38,28 @@ ext['spock.version'] = '1.1-groovy-2.4'
 
 dependencies {
 	// Web app based on spring boot
-	compile('org.springframework.boot:spring-boot-starter-web')
+	compile 'org.springframework.boot:spring-boot-starter-web'
+	// REST endpoint generating
+	compile 'org.springframework.boot:spring-boot-starter-data-rest'
+	// ORM spring integration
+	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// Light-weight database inside RAM
+	compile 'com.h2database:h2'
 
 	// Kotlin compile libraries
-	compile("org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}")
-	compile("org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}")
+	compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}"
+	compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
 
 	// Automatic API documentation
-	compile('io.springfox:springfox-swagger2:2.7.0')
-	compile('io.springfox:springfox-swagger-ui:2.7.0')
+	compile 'io.springfox:springfox-swagger2:2.7.0'
+	compile 'io.springfox:springfox-data-rest:2.7.0'
+	compile 'io.springfox:springfox-swagger-ui:2.7.0'
 
 	// Spring integration test tool
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
 
 	// Spock as an easy test framework
-	testCompile('org.spockframework:spock-core')
-	testCompile('org.spockframework:spock-spring')
+	testCompile 'org.spockframework:spock-core'
+	testCompile 'org.spockframework:spock-spring'
 }
