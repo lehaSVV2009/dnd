@@ -30,8 +30,8 @@ class SwaggerConfiguration {
             .build()
 
     private fun apiInfo(): ApiInfo = ApiInfoBuilder()
-            .title("DnD Game Person API")
-            .description("API to make life of DnD players easier")
+            .title("Dungeons and Dragons Hero API")
+            .description("API to make life of DnD Heros easier")
             .build()
 }
 

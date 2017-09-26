@@ -3,12 +3,12 @@ package kadet.dnd.api
 import org.springframework.data.annotation.Id
 
 /**
- * Simple person metadata
+ * Simple hero metadata
  */
-class Person {
+class Hero {
 
     /**
-     * Unique player id like '123'
+     * Unique Hero id like '123'
      */
     @Id
     val id: String? = null
@@ -19,7 +19,7 @@ class Person {
     val name: String? = null
 
     /**
-     * Person notes
+     * Hero notes
      */
     val description: String? = null
 

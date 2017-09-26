@@ -17,17 +17,17 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class PersonApiTest extends Specification {
+class HeroApiTest extends Specification {
 
   public static final String ID = '999999'
 
   @Autowired
   MockMvc mvc
 
-  def 'should CRUD player'() {
+  def 'should CRUD Hero'() {
     when:
     def responses = [
-        'create': createPlayer(
+        'create': createHero(
             [
                 id         : ID,
                 name       : 'Фея',
@@ -41,14 +41,14 @@ class PersonApiTest extends Specification {
                 ]
             ]
         ),
-        'read'  : readPlayer(ID),
-        'update': updatePlayer(ID,
+        'read'  : readHero(ID),
+        'update': updateHero(ID,
             [name: 'Фей']
         ),
-        'patch' : partiallyUpdatePlayer(ID,
+        'patch' : partiallyUpdateHero(ID,
             [description: 'Персонаж Леши']
         ),
-        'delete': deletePlayer(ID)
+        'delete': deleteHero(ID)
     ]
 
     then:
@@ -102,27 +102,27 @@ class PersonApiTest extends Specification {
     }
   }
 
-  private def createPlayer(def player) {
-    String json = new JsonBuilder(player)
-    response(mvc.perform(post('/persons').content(json)))
+  private def createHero(def Hero) {
+    String json = new JsonBuilder(Hero)
+    response(mvc.perform(post('/heroes').content(json)))
   }
 
-  private def readPlayer(String id) {
-    response mvc.perform(get("/persons/${id}"))
+  private def readHero(String id) {
+    response mvc.perform(get("/heroes/${id}"))
   }
 
-  private def updatePlayer(String id, def player) {
-    String json = new JsonBuilder(player)
-    response mvc.perform(put("/persons/${id}").content(json))
+  private def updateHero(String id, def Hero) {
+    String json = new JsonBuilder(Hero)
+    response mvc.perform(put("/heroes/${id}").content(json))
   }
 
-  private def partiallyUpdatePlayer(String id, def partialPlayer) {
-    String json = new JsonBuilder(partialPlayer)
-    response mvc.perform(patch("/persons/${id}").content(json))
+  private def partiallyUpdateHero(String id, def partialHero) {
+    String json = new JsonBuilder(partialHero)
+    response mvc.perform(patch("/heroes/${id}").content(json))
   }
 
-  private def deletePlayer(String id) {
-    response mvc.perform(delete("/persons/${id}"))
+  private def deleteHero(String id) {
+    response mvc.perform(delete("/heroes/${id}"))
   }
 
   def response(ResultActions resultActions) {
