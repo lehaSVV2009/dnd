@@ -1,0 +1,59 @@
+buildscript {
+  ext {
+    kotlinVersion = '1.1.4-3'
+    springBootVersion = '1.5.7.RELEASE'
+  }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
+    classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
+  }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-spring'
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
+
+compileKotlin {
+  kotlinOptions.jvmTarget = '1.8'
+}
+compileTestKotlin {
+  kotlinOptions.jvmTarget = '1.8'
+}
+
+repositories {
+  mavenCentral()
+}
+
+// Force to use 1.1 spock version (not 1.0)
+// https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html#boot-features-testing-spring-boot-applications-with-spock
+ext['spock.version'] = '1.1-groovy-2.4'
+
+dependencies {
+  // Web app based on spring boot
+  compile 'org.springframework.boot:spring-boot-starter-web'
+  // REST endpoint generating
+  compile 'org.springframework.boot:spring-boot-starter-data-rest'
+  // MongoDB Spring integration
+  compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+  // Kotlin compile libraries
+  compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlinVersion}"
+  compile "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}"
+
+  // Automatic API documentation
+  compile 'io.springfox:springfox-swagger2:2.7.0'
+  compile 'io.springfox:springfox-data-rest:2.7.0'
+  compile 'io.springfox:springfox-swagger-ui:2.7.0'
+
+  // Spring integration test tool
+  testCompile 'org.springframework.boot:spring-boot-starter-test'
+
+  // Spock as an easy test framework
+  testCompile 'org.spockframework:spock-core'
+  testCompile 'org.spockframework:spock-spring'
+}

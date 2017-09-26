@@ -1,0 +1,34 @@
+version: '2.1'
+services:
+
+  mongodb:
+    image: mongo:latest
+    restart: on-failure
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: echo 'db.stats().ok' | mongo localhost:27017/test --quiet
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    command: mongod --smallfiles
+
+  api:
+    build: api
+    restart: on-failure
+    links:
+      - mongodb:mongodb
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      - MONGO_URL=mongodb/test
+
+  web:
+    build: web
+    ports:
+      - "80:80"
+    links:
+      - api:api
