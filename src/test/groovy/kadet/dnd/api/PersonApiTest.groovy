@@ -17,9 +17,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class PlayersApiTest extends Specification {
+class PersonApiTest extends Specification {
 
-  public static final String ID = '1'
+  public static final String ID = '999999'
 
   @Autowired
   MockMvc mvc
@@ -28,14 +28,25 @@ class PlayersApiTest extends Specification {
     when:
     def responses = [
         'create': createPlayer(
-            [id: ID, name: 'Alex', description: 'My hero is here']
+            [
+                id         : ID,
+                name       : 'Фея',
+                description: 'Персонаж Леши',
+                level      : 5,
+                category   : 'Волшебник',
+                race       : 'Эладрин',
+                experience : 5500,
+                languages  : [
+                    'Общий', 'Эльфийский'
+                ]
+            ]
         ),
         'read'  : readPlayer(ID),
         'update': updatePlayer(ID,
-            [name: 'Alexey']
+            [name: 'Фей']
         ),
         'patch' : partiallyUpdatePlayer(ID,
-            [description: 'My hero is still here']
+            [description: 'Персонаж Леши']
         ),
         'delete': deletePlayer(ID)
     ]
@@ -45,32 +56,44 @@ class PlayersApiTest extends Specification {
       status == 201
       def json = parseJson(contentAsByteArray)
       json.id == ID
-      json.name == 'Alex'
-      json.description == 'My hero is here'
+      json.name == 'Фея'
+      json.description == 'Персонаж Леши'
+      json.level == 5
+      json.category == 'Волшебник'
+      json.race == 'Эладрин'
+      json.experience == 5500
+      json.languages == ['Общий', 'Эльфийский']
     }
 
     with(responses['read']) {
       status == 200
       def json = parseJson(contentAsByteArray)
       json.id == ID
-      json.name == 'Alex'
-      json.description == 'My hero is here'
+      json.name == 'Фея'
+      json.description == 'Персонаж Леши'
+      json.level == 5
+      json.category == 'Волшебник'
+      json.race == 'Эладрин'
+      json.experience == 5500
+      json.languages == ['Общий', 'Эльфийский']
     }
 
     with(responses['update']) {
       status == 200
       def json = parseJson(contentAsByteArray)
       json.id == ID
-      json.name == 'Alexey'
+      json.name == 'Фей'
       json.description == null
+      json.level == 1
+      json.languages == []
     }
 
     with(responses['patch']) {
       status == 200
       def json = parseJson(contentAsByteArray)
       json.id == ID
-      json.name == 'Alexey'
-      json.description == 'My hero is still here'
+      json.name == 'Фей'
+      json.description == 'Персонаж Леши'
     }
 
     with(responses['delete']) {
@@ -81,25 +104,25 @@ class PlayersApiTest extends Specification {
 
   private def createPlayer(def player) {
     String json = new JsonBuilder(player)
-    response(mvc.perform(post('/players').content(json)))
+    response(mvc.perform(post('/persons').content(json)))
   }
 
   private def readPlayer(String id) {
-    response mvc.perform(get("/players/${id}"))
+    response mvc.perform(get("/persons/${id}"))
   }
 
   private def updatePlayer(String id, def player) {
     String json = new JsonBuilder(player)
-    response mvc.perform(put("/players/${id}").content(json))
+    response mvc.perform(put("/persons/${id}").content(json))
   }
 
   private def partiallyUpdatePlayer(String id, def partialPlayer) {
     String json = new JsonBuilder(partialPlayer)
-    response mvc.perform(patch("/players/${id}").content(json))
+    response mvc.perform(patch("/persons/${id}").content(json))
   }
 
   private def deletePlayer(String id) {
-    response mvc.perform(delete("/players/${id}"))
+    response mvc.perform(delete("/persons/${id}"))
   }
 
   def response(ResultActions resultActions) {

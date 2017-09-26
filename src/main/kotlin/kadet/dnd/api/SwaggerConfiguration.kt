@@ -18,7 +18,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2
 class SwaggerConfiguration {
 
     /**
-     * Swagger API generator.
+     * Swagger API generator
      * Available in {host}:{port}/swagger-ui.html
      */
     @Bean
@@ -30,7 +30,7 @@ class SwaggerConfiguration {
             .build()
 
     private fun apiInfo(): ApiInfo = ApiInfoBuilder()
-            .title("DnD Game Player API")
+            .title("DnD Game Person API")
             .description("API to make life of DnD players easier")
             .build()
 }

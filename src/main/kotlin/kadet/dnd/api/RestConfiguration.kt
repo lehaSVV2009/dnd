@@ -10,6 +10,6 @@ class RestConfiguration : RepositoryRestConfigurerAdapter() {
     override fun configureRepositoryRestConfiguration(config: RepositoryRestConfiguration?) {
         // By default id is not exposed to client
         // https://jira.spring.io/browse/DATAREST-366
-        config!!.exposeIdsFor(Player::class.java)
+        config!!.exposeIdsFor(Person::class.java)
     }
 }

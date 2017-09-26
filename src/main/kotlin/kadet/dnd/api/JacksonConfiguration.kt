@@ -41,7 +41,7 @@ class JacksonConfiguration {
   }
 
   /**
-   * Allow not to add 'Content-Type:application/json' header to all the json requests.
+   * Allow not to add 'Content-Type:application/json' header to all the json requests
    */
   @Bean
   fun jacksonConverter(objectMapper: ObjectMapper) : MappingJackson2HttpMessageConverter {
