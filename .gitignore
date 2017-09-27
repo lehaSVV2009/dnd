@@ -32,7 +32,8 @@ hs_err_pid*
 *.ipr
 
 # dependencies
-/node_modules
+*/node_modules/*
+*/build/*
 
 # testing
 /coverage
