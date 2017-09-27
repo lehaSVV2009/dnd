@@ -3,6 +3,26 @@ package kadet.dnd.api
 class Characteristics {
 
     /**
+     * Инициатива
+     */
+    val initiative: Int = 0
+
+    /**
+     * Скорость
+     */
+    val speed: Int = 0
+
+    /**
+     * Проницательность
+     */
+    val vision: Int = 0
+
+    /**
+     * Внимательность
+     */
+    val attentiveness: Int = 0
+
+    /**
      * Сила
      */
     val strength: Int = 0

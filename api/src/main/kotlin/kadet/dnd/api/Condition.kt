@@ -1,6 +1,6 @@
 package kadet.dnd.api
 
-class Health {
+class Condition {
 
     /**
      * Хиты

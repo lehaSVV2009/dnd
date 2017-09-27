@@ -47,29 +47,14 @@ class Hero {
     val race: String? = null
 
     /**
-     * Инициатива
-     */
-    val initiative: Int = 0
-
-    /**
-     * Скорость
-     */
-    val speed: Int = 0
-
-    /**
-     * Проницательность
-     */
-    val vision: Int = 0
-
-    /**
      * Известные языки
      */
     val languages: List<String> = listOf()
 
     /**
-     * Внимательность
+     * Состояние
      */
-    val attentiveness: Int = 0
+    val condition: Condition? = null
 
     /**
      * Защиты
@@ -79,7 +64,7 @@ class Hero {
     /**
      * Характеристики
      */
-    val charcteristics: Characteristics? = null
+    val characteristics: Characteristics? = null
 
     /**
      * Навыки

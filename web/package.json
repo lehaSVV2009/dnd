@@ -2,9 +2,15 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Alex Soroka",
+    "email": "lehaSVV2009@gmail.com"
+  },
   "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "axios": "^0.16.2",
+    "material-ui": "0.19.2",
+    "react": "16.0.0",
+    "react-dom": "16.0.0",
     "react-scripts": "1.0.14"
   },
   "scripts": {
