@@ -30,23 +30,25 @@ class HeroApiTest extends Specification {
         'create': createHero(
             [
                 id         : ID,
-                name       : 'Фея',
-                description: 'Персонаж Леши',
-                level      : 5,
-                category   : 'Волшебник',
-                race       : 'Эладрин',
-                experience : 5500,
-                languages  : [
-                    'Общий', 'Эльфийский'
+                profile: [
+                    name       : 'Фея',
+                    description: 'Персонаж Леши',
+                    level      : 5,
+                    category   : 'Волшебник',
+                    race       : 'Эладрин',
+                    experience : 5500,
+                    languages  : [
+                        'Общий', 'Эльфийский'
+                    ]
                 ]
             ]
         ),
         'read'  : readHero(ID),
         'update': updateHero(ID,
-            [name: 'Фей']
+            [profile: [ name: 'Фей']]
         ),
         'patch' : partiallyUpdateHero(ID,
-            [description: 'Персонаж Леши']
+            [profile: [ description: 'Персонаж Леши']]
         ),
         'delete': deleteHero(ID)
     ]
@@ -56,44 +58,44 @@ class HeroApiTest extends Specification {
       status == 201
       def json = parseJson(contentAsByteArray)
       json.id == ID
-      json.name == 'Фея'
-      json.description == 'Персонаж Леши'
-      json.level == 5
-      json.category == 'Волшебник'
-      json.race == 'Эладрин'
-      json.experience == 5500
-      json.languages == ['Общий', 'Эльфийский']
+      json.profile.name == 'Фея'
+      json.profile.description == 'Персонаж Леши'
+      json.profile.level == 5
+      json.profile.category == 'Волшебник'
+      json.profile.race == 'Эладрин'
+      json.profile.experience == 5500
+      json.profile.languages == ['Общий', 'Эльфийский']
     }
 
     with(responses['read']) {
       status == 200
       def json = parseJson(contentAsByteArray)
       json.id == ID
-      json.name == 'Фея'
-      json.description == 'Персонаж Леши'
-      json.level == 5
-      json.category == 'Волшебник'
-      json.race == 'Эладрин'
-      json.experience == 5500
-      json.languages == ['Общий', 'Эльфийский']
+      json.profile.name == 'Фея'
+      json.profile.description == 'Персонаж Леши'
+      json.profile.level == 5
+      json.profile.category == 'Волшебник'
+      json.profile.race == 'Эладрин'
+      json.profile.experience == 5500
+      json.profile.languages == ['Общий', 'Эльфийский']
     }
 
     with(responses['update']) {
       status == 200
       def json = parseJson(contentAsByteArray)
       json.id == ID
-      json.name == 'Фей'
-      json.description == null
-      json.level == 1
-      json.languages == []
+      json.profile.name == 'Фей'
+      json.profile.description == null
+      json.profile.level == 1
+      json.profile.languages == []
     }
 
     with(responses['patch']) {
       status == 200
       def json = parseJson(contentAsByteArray)
       json.id == ID
-      json.name == 'Фей'
-      json.description == 'Персонаж Леши'
+      json.profile.name == 'Фей'
+      json.profile.description == 'Персонаж Леши'
     }
 
     with(responses['delete']) {
