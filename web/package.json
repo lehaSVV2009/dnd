@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "material-ui": "^0.19.2",
+    "material-ui-slider-label": "https://github.com/tariqwest/material-ui-slider-label.git",
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "react-flexbox-grid": "^1.1.5",

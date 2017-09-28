@@ -1,19 +1,41 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Col, Row } from 'react-flexbox-grid'
+import List from 'material-ui/List/List'
+import ListItem from 'material-ui/List/ListItem'
 
-import ControlledSlider from './ControlledSlider'
+import LabeledSlider from './LabeledSlider'
 
 export default class ConditionItem extends Component {
   render() {
     return (
-      <div>
-        <div>{this.props.name}: </div>
-        <ControlledSlider
-          min={this.props.min || 0}
-          max={this.props.max || 100}
-          step={this.props.step || 1}
-          value={this.props.value || 0}
-        />
-      </div>
+      <Row>
+        <Col xs={2}/>
+        <Col xs={2}>
+          <List>
+            <ListItem
+              disabled={true}
+              leftIcon={this.props.icon}
+            />
+          </List>
+        </Col>
+        <Col xs={5}>
+          <LabeledSlider
+            min={this.props.min || 0}
+            max={this.props.max || 100}
+            step={this.props.step || 1}
+            value={this.props.value || 0}
+          />
+        </Col>
+        <Col xs={3}>
+          <List>
+            <ListItem
+              disabled={true}
+            >
+              {this.props.name}
+            </ListItem>
+          </List>
+        </Col>
+      </Row>
     )
   }
 }
