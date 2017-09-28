@@ -3,9 +3,10 @@ import React, { Component } from 'react'
 import * as api from './API'
 import CharacteristicsPage from './containers/CharacteristicsPage'
 import ConditionPage from './containers/ConditionPage'
+import PageWrapper from './components/PageWrapper'
 import ProfilePage from './containers/ProfilePage'
 import SkillsPage from './containers/SkillsPage'
-import SpellsPage from './containers/SpellsPage'
+import TalentsPage from './containers/TalentsPage'
 
 export default class Hero extends Component {
   constructor(props) {
@@ -47,7 +48,7 @@ export default class Hero extends Component {
     }
 
     return (
-      <div>
+      <PageWrapper>
         <ProfilePage
           profile={this.state.hero}
         />
@@ -64,8 +65,8 @@ export default class Hero extends Component {
           skills={this.state.hero.skills}
         />
         <br/>
-        <SpellsPage/>
-      </div>
+        <TalentsPage/>
+      </PageWrapper>
     )
   }
 }
