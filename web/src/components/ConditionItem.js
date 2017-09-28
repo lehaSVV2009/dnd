@@ -18,7 +18,7 @@ export default class ConditionItem extends Component {
             />
           </List>
         </Col>
-        <Col xs={5}>
+        <Col xs={4}>
           <LabeledSlider
             min={this.props.min || 0}
             max={this.props.max || 100}
@@ -26,7 +26,7 @@ export default class ConditionItem extends Component {
             value={this.props.value || 0}
           />
         </Col>
-        <Col xs={3}>
+        <Col xs={4}>
           <List>
             <ListItem
               disabled={true}
