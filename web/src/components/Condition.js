@@ -20,6 +20,7 @@ export default class Condition extends Component {
             { icon: 'Максимальное количество хитов', value: condition.max_hit_points },
             { icon: 'Текущее количество хитов', value: condition.current_hit_points },
             { icon: 'Исцеления', value: condition.healings },
+            { icon: 'Величина исцеления', value: condition.healing_value },
             { icon: 'Исцеления в день', value: condition.healings_per_day },
             { icon: 'Неудачные спасброски от смерти', value: condition.death_save_failures }
           ]}

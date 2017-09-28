@@ -1,0 +1,61 @@
+{
+  "characteristics": {
+    "attentiveness": 2,
+    "charisma": 1,
+    "constitution": 1,
+    "dexterity": 2,
+    "initiative": 6,
+    "intelligence": 8,
+    "speed": 6,
+    "strength": 2,
+    "vision": 7,
+    "wisdom": 2
+  },
+  "condition": {
+    "current_hit_points": 35,
+    "death_save_failures": 0,
+    "healings": 7,
+    "healings_per_day": 7,
+    "healing_value": 8,
+    "max_hit_points": 35
+  },
+  "id": "Alex",
+  "profile": {
+    "avatar": "https://i.pinimg.com/736x/52/43/76/524376d102c1837d936a618024597de1--character-creation-character-concept.jpg",
+    "category": "Волшебник",
+    "description": "Контроллер. Вы управляете посредством магических эффектов, покрывающих большие области — некоторые из них лишь препятствуют врагам, а другие уничтожают противника. Эладрины, существа магии с сильными связями с природой, живут в городах сумеречного царства Страны Фей. Их города расположены так близко к нашему миру, что иногда они переходят сюда, ненадолго появляясь в горных долинах или на лесных опушках, прежде чем вновь уйти в Страну Фей.",
+    "experience": 5500,
+    "image": "https://vignette3.wikia.nocookie.net/kerectusportal/images/7/74/EladrinMaleGelmir1.jpg/revision/latest?cb=20131024071151",
+    "languages": [
+      "Общий", "Эльфийский"
+    ],
+    "level": 5,
+    "name": "Фей",
+    "race": "Эладрин"
+  },
+  "protections": {
+    "armor_сlass": 19,
+    "durability": 14,
+    "reaction": 18,
+    "will": 15
+  },
+  "skills": {
+    "acrobatics": 2,
+    "athletics": 2,
+    "deception": 1,
+    "dungeons": 2,
+    "endurance": 1,
+    "history": 8,
+    "insights": 2,
+    "intimidation": 1,
+    "investigation": 1,
+    "magic": 8,
+    "medicine": 2,
+    "nature": 2,
+    "perception": 2,
+    "persuasion": 1,
+    "religion": 8,
+    "stealing": 2,
+    "stealth": 2
+  }
+}

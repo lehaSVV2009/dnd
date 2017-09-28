@@ -23,6 +23,11 @@ class Condition {
     val healingsPerDay: Int = 0
 
     /**
+     * Величина исцеления
+     */
+    val healingValue: Int = 0
+
+    /**
      * Неудачные спасброски от смерти
      */
     val deathSaveFailures: Int = 0
