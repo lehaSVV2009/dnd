@@ -11,5 +11,15 @@ class RestConfiguration : RepositoryRestConfigurerAdapter() {
         // By default id is not exposed to client
         // https://jira.spring.io/browse/DATAREST-366
         config!!.exposeIdsFor(Hero::class.java)
+
+        // Allow cross origin requests in spring-rest-data app
+        // https://stackoverflow.com/questions/31724994/spring-data-rest-and-cors
+        config.corsRegistry
+                .addMapping("/**")
+                .allowedOrigins("*")
+                .allowedMethods("*")
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .maxAge(3600)
     }
 }
