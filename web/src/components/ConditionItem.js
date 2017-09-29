@@ -6,6 +6,9 @@ import ListItem from 'material-ui/List/ListItem'
 import LabeledSlider from './LabeledSlider'
 
 export default class ConditionItem extends Component {
+
+  handleChange = (value) => this.props.onChange(value)
+
   render() {
     return (
       <Row>
@@ -24,6 +27,7 @@ export default class ConditionItem extends Component {
             max={this.props.max || 100}
             step={this.props.step || 1}
             value={this.props.value || 0}
+            onChange={this.handleChange}
           />
         </Col>
         <Col xs={4}>

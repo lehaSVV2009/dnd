@@ -31,6 +31,7 @@ export default class LabeledSlider extends Component {
 
   handleSliderChange = (event, value) => {
     this.setState({ slider: value })
+    this.props.onChange(value);
   }
 
   render() {

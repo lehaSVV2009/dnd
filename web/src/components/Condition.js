@@ -8,6 +8,10 @@ import ConditionItem from './ConditionItem'
 
 export default class Condition extends Component {
 
+  handleHealthChange = (value) => this.props.onHealthChange(value)
+  handleHealingsChange = (value) => this.props.onHealingsChange(value)
+  handleDeathSavesChange = (value) => this.props.onDeathSavesChange(3 - value)
+
   render() {
     const { condition } = this.props;
 
@@ -20,19 +24,23 @@ export default class Condition extends Component {
         <br/>
         <ConditionItem
           max={condition.max_hit_points}
+          min={-1}
           value={condition.current_hit_points}
           icon={<HeartIcon />}
+          onChange={this.handleHealthChange}
         />
         <ConditionItem
           max={condition.healings_per_day}
           value={condition.healings}
           icon={<HealingIcon />}
           name={'(+' + condition.healing_value + ' хитов)'}
+          onChange={this.handleHealingsChange}
         />
         <ConditionItem
           max={3}
           value={3 - condition.death_save_failures}
           icon={<DeathIcon />}
+          onChange={this.handleDeathSavesChange}
         />
       </Paper>
     )

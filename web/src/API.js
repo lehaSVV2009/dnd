@@ -9,11 +9,15 @@ export const validateStatus = (status) => {
 }
 
 export const client = axios.create({
-  baseURL: 'http://demo7668243.mockable.io',
+  baseURL: process.env.REACT_APP_DND_API_URL,
   headers: DEFAULT_HTTP_HEADERS,
   validateStatus: validateStatus
 })
 
 export const fetchHero = ({ id }) => {
   return client.get(`/heroes/${id}`)
+}
+
+export const patchHero = ({ id, hero }) => {
+  return client.patch(`/heroes/${id}`, hero)
 }

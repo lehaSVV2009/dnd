@@ -21,16 +21,40 @@ export default class Hero extends Component {
   /**
    * Load when component is created.
    */
-  componentDidMount() {
+  componentDidMount = () => {
     this.setState({ hero: null, heroLoading: true, error: null })
-    api.fetchHero({ id: 'Alex' })
+    this.handleHeroResponse(
+      api.fetchHero({ id: this.props.id })
+    )
+  }
+
+  handleHealthChange = (value) => {
+    this.handleHeroResponse(
+      api.patchHero({ id: this.props.id, hero: { condition: { current_hit_points: value }}})      
+    )
+  }
+
+  handleHealingsChange = (value) => {
+    this.handleHeroResponse(
+      api.patchHero({ id: this.props.id, hero: { condition: { healings: value }}})      
+    )
+  }
+
+  handleDeathSavesChange = (value) => {
+    this.handleHeroResponse(
+      api.patchHero({ id: this.props.id, hero: { condition: { death_save_failures: value }}})      
+    )
+  }
+
+  handleHeroResponse = (promise) => {
+    promise
       .then((response) => {
-        this.setState({ hero: response.data, heroLoading: false })
+        this.setState({ hero: response.data, heroLoading: false, error: null })
       })
       .catch((error) => {
         this.setState({ hero: null, heroLoading: false, error: error.toString() })            
       })
-  }
+  }  
 
   render() {
     const { hero, heroLoading, error } = this.state
@@ -57,6 +81,9 @@ export default class Hero extends Component {
         <br/>
         <ConditionPage
           condition={hero.condition}
+          onHealthChange={this.handleHealthChange}
+          onHealingsChange={this.handleHealingsChange}
+          onDeathSavesChange={this.handleDeathSavesChange}
         />
         <br/>
         <CharacteristicsPage
