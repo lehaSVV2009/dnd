@@ -23,7 +23,7 @@ export default class Condition extends Component {
     }
 
     return (
-      <Paper className='left'>
+      <Paper>
         <Subheader>Состояние</Subheader>
         <br/>
         <ConditionItem
