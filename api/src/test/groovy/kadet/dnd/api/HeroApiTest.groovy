@@ -40,15 +40,29 @@ class HeroApiTest extends Specification {
                     languages  : [
                         'Общий', 'Эльфийский'
                     ]
-                ]
+                ],
+                talents: [[
+                    title: 'Магическая стрела',
+                    description: 'Вы запускаете во врага серебристый разряд силового поля.',
+                    limit_type: 'Неограниченный',
+                    action_type: 'Стандартное действие',
+                    requirements: ['Инструмент', 'Магический', 'Силовое поле'],
+                    used: 0
+                ]]
             ]
         ),
         'read'  : readHero(ID),
         'update': updateHero(ID,
-            [profile: [ name: 'Фей']]
+            [
+                profile: [ name: 'Фей'],
+                talents: [[ goal: 'Одно существо' ]]
+            ]
         ),
         'patch' : partiallyUpdateHero(ID,
-            [profile: [ description: 'Персонаж Леши']]
+            [
+                profile: [ description: 'Персонаж Леши'],
+                talents: [[:], [ used: 1 ]]
+            ]
         ),
         'delete': deleteHero(ID)
     ]
@@ -65,6 +79,10 @@ class HeroApiTest extends Specification {
       json.profile.race == 'Эладрин'
       json.profile.experience == 5500
       json.profile.languages == ['Общий', 'Эльфийский']
+      json.talents[0].title == 'Магическая стрела'
+      json.talents[0].limit_type == 'Неограниченный'
+      json.talents[0].action_type == 'Стандартное действие'
+      json.talents[0].used == 0
     }
 
     with(responses['read']) {
@@ -78,6 +96,10 @@ class HeroApiTest extends Specification {
       json.profile.race == 'Эладрин'
       json.profile.experience == 5500
       json.profile.languages == ['Общий', 'Эльфийский']
+      json.talents[0].title == 'Магическая стрела'
+      json.talents[0].limit_type == 'Неограниченный'
+      json.talents[0].action_type == 'Стандартное действие'
+      json.talents[0].used == 0
     }
 
     with(responses['update']) {
@@ -88,6 +110,7 @@ class HeroApiTest extends Specification {
       json.profile.description == null
       json.profile.level == 1
       json.profile.languages == []
+      json.talents[0].goal == 'Одно существо'
     }
 
     with(responses['patch']) {
@@ -96,6 +119,8 @@ class HeroApiTest extends Specification {
       json.id == ID
       json.profile.name == 'Фей'
       json.profile.description == 'Персонаж Леши'
+      json.talents[0].goal == 'Одно существо'
+      json.talents[1].used == 1
     }
 
     with(responses['delete']) {

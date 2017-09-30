@@ -25,7 +25,6 @@ class Profile {
     /**
      * Уровень от 1 до ..
      */
-    // TODO no need to store level if experience is stored
     val level: Int? = 1
 
     /**

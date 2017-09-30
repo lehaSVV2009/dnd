@@ -37,4 +37,9 @@ class Hero {
      * Навыки
      */
     val skills: Skills? = null
+
+    /**
+     * Таланты
+     */
+    val talents: List<Talent> = listOf()
 }
