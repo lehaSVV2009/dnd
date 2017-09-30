@@ -1,32 +1,25 @@
 import React, { Component } from 'react'
-import Slider from 'material-ui-slider-label/Slider'
-import { cyan500 } from 'material-ui/styles/colors'
-
-const styles = {
-  labelStyleOuter: {
-    width: '20px',
-    height: '20px',
-    borderRadius: '50% 50% 50% 0',
-    background: cyan500,
-    position: 'absolute',
-    transform: 'rotate(-45deg)',
-    top: '-25px',
-    left: '-4px',
-  },
-  labelStyleInner: {
-    transform: 'rotate(45deg)',
-    color: 'white',
-    textAlign: 'center',
-    position: 'relative',
-    top: '3px',
-    right: '0px',
-    fontSize: '10px',
-  }
-}
+import Chip from 'material-ui/Chip'
+import { Col, Row } from 'react-flexbox-grid'
+import IconButton from 'material-ui/IconButton'
+import IconMinus from 'material-ui/svg-icons/content/remove-circle-outline'
+import IconPlus from 'material-ui/svg-icons/content/add-circle-outline'
 
 export default class LabeledSlider extends Component {
   state = {
     slider: this.props.value
+  }
+
+  handleMinusButtonClick = (event) => {
+    if (this.state.slider > (this.props.min || 0)) {
+      this.handleSliderChange(event, this.state.slider - 1)
+    }
+  }
+
+  handlePlusButtonClick = (event) => {
+    if (this.state.slider < (this.props.max || 100)) {
+      this.handleSliderChange(event, this.state.slider + 1)
+    }
   }
 
   handleSliderChange = (event, value) => {
@@ -36,21 +29,23 @@ export default class LabeledSlider extends Component {
 
   render() {
     return (
-      <Slider
-        style={styles}
-        min={this.props.min || 0}
-        max={this.props.max || 100}
-        step={this.props.step || 1}
-        value={this.state.slider || 0}
-        onChange={this.handleSliderChange}
-        label={
-          <div style={styles.labelStyleOuter}>
-            <div style={styles.labelStyleInner}>
-              {this.state.slider}
-            </div>
-          </div>
-        }
-      />
+      <Row around='xs'>
+        <Col xs={2}>
+          <IconButton onClick={this.handleMinusButtonClick}>
+            <IconMinus />
+          </IconButton>
+        </Col>
+        <Col xs={1}>
+          <Chip>
+            {this.state.slider}
+          </Chip>
+        </Col>
+        <Col xs={2}>
+          <IconButton onClick={this.handlePlusButtonClick}>
+            <IconPlus />
+          </IconButton>
+        </Col>
+      </Row>
     )
   }
 }

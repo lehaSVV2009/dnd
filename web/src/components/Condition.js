@@ -35,7 +35,7 @@ export default class Condition extends Component {
           onChange={(value) => this.handleChange({ condition: { current_hit_points: value }})}
         />
         <ConditionItem
-          name='Исцеления'
+          name='Хил'
           description={`(+${condition.healing_value} хитов)`}
           max={condition.healings_per_day}
           value={condition.healings}
@@ -43,7 +43,7 @@ export default class Condition extends Component {
           onChange={(value) => this.handleChange({ condition: { healings: value }})}
           />
         <ConditionItem
-          name='Спасброски'
+          name='Спас броски'
           max={3}
           value={3 - condition.death_save_failures}
           icon={<DeathIcon />}

@@ -18,19 +18,18 @@ export default class ConditionItem extends Component {
 
     return (
       <Row>
-        <Col xs={5}>
+        <Col xs={4}>
           <List>
             <ListItem
               disabled={true}
               leftIcon={this.props.icon}
             >
-              {this.props.name}
-              {this.props.description}
+              {this.props.name} {this.props.description}
             </ListItem>
           </List>
         </Col>
-        <Col xs={3}/>
-        <Col xs={3}>
+        <Col xs={1}/>
+        <Col xs={6}>
           <LabeledSlider
             min={min}
             max={max}
