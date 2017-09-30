@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 
 import * as api from './API'
-import CharacteristicsPage from './containers/CharacteristicsPage'
-import ConditionPage from './containers/ConditionPage'
-import PageWrapper from './components/PageWrapper'
-import ProfilePage from './containers/ProfilePage'
-import SkillsPage from './containers/SkillsPage'
-import TalentsPage from './containers/TalentsPage'
+import MainPage from './containers/MainPage'
 
 export default class Hero extends Component {
   constructor(props) {
@@ -28,21 +23,9 @@ export default class Hero extends Component {
     )
   }
 
-  handleHealthChange = (value) => {
+  handleConditionChange = (newJson) => {
     this.handleHeroResponse(
-      api.patchHero({ id: this.props.id, hero: { condition: { current_hit_points: value }}})      
-    )
-  }
-
-  handleHealingsChange = (value) => {
-    this.handleHeroResponse(
-      api.patchHero({ id: this.props.id, hero: { condition: { healings: value }}})      
-    )
-  }
-
-  handleDeathSavesChange = (value) => {
-    this.handleHeroResponse(
-      api.patchHero({ id: this.props.id, hero: { condition: { death_save_failures: value }}})      
+      api.patchHero({ id: this.props.id, hero: newJson })      
     )
   }
 
@@ -54,7 +37,7 @@ export default class Hero extends Component {
       .catch((error) => {
         this.setState({ hero: null, heroLoading: false, error: error.toString() })            
       })
-  }  
+  }
 
   render() {
     const { hero, heroLoading, error } = this.state
@@ -74,28 +57,10 @@ export default class Hero extends Component {
     }
 
     return (
-      <PageWrapper>
-        <ProfilePage
-          profile={hero.profile}
-        />
-        <br/>
-        <ConditionPage
-          condition={hero.condition}
-          onHealthChange={this.handleHealthChange}
-          onHealingsChange={this.handleHealingsChange}
-          onDeathSavesChange={this.handleDeathSavesChange}
-        />
-        <br/>
-        <CharacteristicsPage
-          characteristics={hero.characteristics}
-        />
-        <br/>
-        <SkillsPage
-          skills={hero.skills}
-        />
-        <br/>
-        <TalentsPage/>
-      </PageWrapper>
+      <MainPage 
+        hero={hero}
+        onConditionChange={this.handleConditionChange}  
+      />
     )
   }
 }

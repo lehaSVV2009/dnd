@@ -9,6 +9,9 @@ export default class PageWrapper extends Component {
           <Row center='xs'>
             <Col lg={4} md={6} sm={8} xs={12}>
               {this.props.children}
+              <br/>
+              <br/>
+              <br/>
             </Col>
           </Row>
         </Col>

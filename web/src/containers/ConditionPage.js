@@ -4,23 +4,20 @@ import Condition from '../components/Condition'
 
 export default class ConditionPage extends Component {
 
-  handleHealthChange = (value) => this.props.onHealthChange(value)
-  handleHealingsChange = (value) => this.props.onHealingsChange(value)
-  handleDeathSavesChange = (value) => this.props.onDeathSavesChange(value)
+  handleChange = (newJson) => this.props.onChange(newJson)
 
   render() {
-    const { condition } = this.props;
+    const { condition, protections } = this.props;
 
-    if (!condition) {
+    if (!condition || !protections) {
       return (<div>Состояние отсутствует</div>)
     }
 
     return (
       <Condition 
         condition={condition}
-        onHealthChange={this.handleHealthChange}
-        onHealingsChange={this.handleHealingsChange}
-        onDeathSavesChange={this.handleDeathSavesChange}
+        protections={protections}
+        onChange={this.handleChange}
       />
     )
   }
