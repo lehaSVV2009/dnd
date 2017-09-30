@@ -23,7 +23,7 @@ export default class Hero extends Component {
     )
   }
 
-  handleConditionChange = (newJson) => {
+  handleHeroChange = (newJson) => {
     this.handleHeroResponse(
       api.patchHero({ id: this.props.id, hero: newJson })      
     )
@@ -59,7 +59,7 @@ export default class Hero extends Component {
     return (
       <MainPage 
         hero={hero}
-        onConditionChange={this.handleConditionChange}  
+        onHeroChange={this.handleHeroChange}
       />
     )
   }

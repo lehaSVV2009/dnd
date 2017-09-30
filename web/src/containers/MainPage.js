@@ -25,7 +25,7 @@ export default class MainPage extends Component {
     }
   }
 
-  handleConditionChange = (newJson) => this.props.onConditionChange(newJson)    
+  handleHeroChange = (newJson) => this.props.onHeroChange(newJson)
   handleAccountTabClick = () => this.setState({ page: 'profile' })
   handleHealthTabClick = () => this.setState({ page: 'health' })
   handleSkillsTabClick = () => this.setState({ page: 'skills' })
@@ -68,7 +68,7 @@ export default class MainPage extends Component {
             <ConditionPage
               condition={hero.condition}
               protections={hero.protections}              
-              onChange={this.handleConditionChange}
+              onChange={this.handleHeroChange}
             />
           }
           {
@@ -86,7 +86,10 @@ export default class MainPage extends Component {
           }
           {
             this.state.page === 'talents' &&
-            <TalentsPage/>
+            <TalentsPage
+              talents={hero.talents}
+              onUseTalent={this.handleHeroChange}
+            />
           }
         </PageWrapper>
         <Footer buttons={this.createFooterButtons()}/>
