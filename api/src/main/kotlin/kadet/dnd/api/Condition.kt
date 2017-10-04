@@ -1,5 +1,7 @@
 package kadet.dnd.api
 
+import java.math.BigDecimal
+
 class Condition {
 
     /**
@@ -31,4 +33,9 @@ class Condition {
      * Неудачные спасброски от смерти
      */
     val deathSaveFailures: Int = 0
+
+    /**
+     * Количество золотых. (123.12 - 123 золотых, 12 серебрянных).
+     */
+    val money: BigDecimal = BigDecimal.valueOf(0)
 }

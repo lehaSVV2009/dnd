@@ -30,6 +30,9 @@ class HeroApiTest extends Specification {
         'create': createHero(
             [
                 id         : ID,
+                condition: [
+                    money: 455.12
+                ],
                 profile: [
                     name       : 'Фея',
                     description: 'Персонаж Леши',
@@ -54,6 +57,7 @@ class HeroApiTest extends Specification {
         'read'  : readHero(ID),
         'update': updateHero(ID,
             [
+                condition: [ money: 500 ],
                 profile: [ name: 'Фей'],
                 talents: [[ goal: 'Одно существо' ]]
             ]
@@ -72,6 +76,7 @@ class HeroApiTest extends Specification {
       status == 201
       def json = parseJson(contentAsByteArray)
       json.id == ID
+      json.condition.money == 455.12
       json.profile.name == 'Фея'
       json.profile.description == 'Персонаж Леши'
       json.profile.level == 5
@@ -89,6 +94,7 @@ class HeroApiTest extends Specification {
       status == 200
       def json = parseJson(contentAsByteArray)
       json.id == ID
+      json.condition.money == 455.12
       json.profile.name == 'Фея'
       json.profile.description == 'Персонаж Леши'
       json.profile.level == 5
@@ -106,6 +112,7 @@ class HeroApiTest extends Specification {
       status == 200
       def json = parseJson(contentAsByteArray)
       json.id == ID
+      json.condition.money == 500.0
       json.profile.name == 'Фей'
       json.profile.description == null
       json.profile.level == 1
@@ -117,12 +124,14 @@ class HeroApiTest extends Specification {
       status == 200
       def json = parseJson(contentAsByteArray)
       json.id == ID
+      json.condition.money == 500.0
       json.profile.name == 'Фей'
       json.profile.description == 'Персонаж Леши'
       json.talents[0].goal == 'Одно существо'
       json.talents[1].used == 1
     }
 
+    cleanup:
     with(responses['delete']) {
       status == 204
       contentAsString == ''

@@ -3,6 +3,7 @@ import DeathIcon from 'material-ui/svg-icons/action/delete-forever'
 import DefenceIcon from 'material-ui/svg-icons/hardware/security'
 import HeartIcon from 'material-ui/svg-icons/action/favorite'
 import HealingIcon from 'material-ui/svg-icons/image/healing'
+import MoneyIcon from 'material-ui/svg-icons/editor/attach-money'
 import PoolIcon from 'material-ui/svg-icons/places/pool'
 import Paper from 'material-ui/Paper'
 import ReactionIcon from 'material-ui/svg-icons/notification/airline-seat-legroom-extra'
@@ -48,6 +49,13 @@ export default class Condition extends Component {
           value={3 - condition.death_save_failures}
           icon={<DeathIcon />}
           onChange={(value) => this.handleChange({ condition: { death_save_failures: 3 - value }})}
+        />
+        <ConditionItem
+          name='Деньги'
+          max={10000}
+          value={condition.money}
+          icon={<MoneyIcon />}
+          onChange={(value) => this.handleChange({ condition: { money: value }})}
         />
         <ConditionItem
           name='КД'

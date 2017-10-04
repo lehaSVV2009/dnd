@@ -34,16 +34,20 @@ export default class MainPage extends Component {
   createFooterButtons = () => {
     return [{
       icon: iconAccount,
-      onClick: this.handleAccountTabClick
+      onClick: this.handleAccountTabClick,
+      label: 'Профиль'
     }, {
       icon: iconHealth,
-      onClick: this.handleHealthTabClick
+      onClick: this.handleHealthTabClick,
+      label: 'Состояние'
     }, {
       icon: iconSchool,
-      onClick: this.handleSkillsTabClick
+      onClick: this.handleSkillsTabClick,
+      label: 'Навыки'
     }, {
       icon: iconFire,
-      onClick: this.handleTalentsTabClick
+      onClick: this.handleTalentsTabClick,
+      label: 'Таланты'
     }]
   }
 

@@ -31,6 +31,7 @@ export default class Footer extends Component {
               <BottomNavigationItem
                 key={index}
                 icon={button.icon}
+                label={button.label}
                 onClick={() => {
                   this.setState({ selected: index })
                   button.onClick()

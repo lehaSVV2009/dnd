@@ -32,7 +32,8 @@
     "healings":6,
     "healings_per_day":7,
     "healing_value":8,
-    "death_save_failures":0
+    "death_save_failures":0,
+    "money": 450.10
   },
   "protections":{
     "armor_class":22,
