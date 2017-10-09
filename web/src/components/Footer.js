@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation'
+import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation'
 import Paper from 'material-ui/Paper'
 
 import './Footer.css'
@@ -25,10 +25,13 @@ export default class Footer extends Component {
 
     return (
       <Paper className='footer'>
-        <BottomNavigation selectedIndex={this.state.selected}>
+        <BottomNavigation 
+          value={this.state.selected}
+          showLabels
+        >
           {
             buttons.map((button, index) => (
-              <BottomNavigationItem
+              <BottomNavigationButton
                 key={index}
                 icon={button.icon}
                 label={button.label}

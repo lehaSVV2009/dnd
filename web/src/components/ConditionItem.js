@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import Avatar from 'material-ui/Avatar'
 import { Col, Row } from 'react-flexbox-grid'
-import List from 'material-ui/List/List'
-import ListItem from 'material-ui/List/ListItem'
+import List, {ListItem, ListItemText} from 'material-ui/List'
 
 import LabeledSlider from './LabeledSlider'
 
@@ -20,11 +20,11 @@ export default class ConditionItem extends Component {
       <Row>
         <Col xs={4}>
           <List>
-            <ListItem
-              disabled={true}
-              leftIcon={this.props.icon}
-            >
-              {this.props.name} {this.props.description}
+            <ListItem disabled={true}>
+              <Avatar>
+                {this.props.icon}
+              </Avatar>
+              <ListItemText primary={this.props.name} secondary={this.props.description} />
             </ListItem>
           </List>
         </Col>

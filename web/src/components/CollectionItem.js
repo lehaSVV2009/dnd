@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 
-import {ListItem} from 'material-ui/List'
+import {ListItem, ListItemText} from 'material-ui/List'
 
 export default class CollectionItem extends Component {
 
   render() {
     return (
-      <ListItem 
-        primaryText={this.props.name}
-        secondaryText={'' + this.props.value}
-      />
+      <ListItem>
+        <ListItemText primary={this.props.name} secondary={'' + this.props.value} />
+      </ListItem>
     )
   }
 }

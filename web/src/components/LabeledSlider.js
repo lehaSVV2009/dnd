@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Chip from 'material-ui/Chip'
 import { Col, Row } from 'react-flexbox-grid'
 import IconButton from 'material-ui/IconButton'
-import IconMinus from 'material-ui/svg-icons/content/remove-circle-outline'
-import IconPlus from 'material-ui/svg-icons/content/add-circle-outline'
+import IconMinus from 'material-ui-icons/RemoveCircleOutline'
+import IconPlus from 'material-ui-icons/AddCircleOutline'
 
 export default class LabeledSlider extends Component {
   state = {
@@ -36,9 +36,7 @@ export default class LabeledSlider extends Component {
           </IconButton>
         </Col>
         <Col xs={1}>
-          <Chip>
-            {this.state.slider}
-          </Chip>
+          <Chip label={this.state.slider}/>
         </Col>
         <Col xs={2}>
           <IconButton onClick={this.handlePlusButtonClick}>

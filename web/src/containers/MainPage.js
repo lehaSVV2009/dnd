@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import IconAccount from 'material-ui/svg-icons/action/account-circle'
-import IconFire from 'material-ui/svg-icons/social/whatshot'
-import IconHealth from 'material-ui/svg-icons/action/favorite'
-import IconSchool from 'material-ui/svg-icons/social/school'
+import IconAccount from 'material-ui-icons/AccountCircle'
+import IconFire from 'material-ui-icons/Whatshot'
+import IconHealth from 'material-ui-icons/Favorite'
+import IconSchool from 'material-ui-icons/School'
 
 import CharacteristicsPage from './CharacteristicsPage'
 import ConditionPage from './ConditionPage'

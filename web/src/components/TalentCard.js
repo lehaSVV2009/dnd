@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card'
-import FlatButton from 'material-ui/FlatButton'
+import Button from 'material-ui/Button'
+import Card, { CardActions, CardContent } from 'material-ui/Card'
+import Typography from 'material-ui/Typography'
 
 export default class TalentCard extends Component {
 
@@ -15,40 +16,40 @@ export default class TalentCard extends Component {
 
     return (
       <Card>
-        <CardHeader
-          title={talent.title}
-          subtitle={`${talent.limit_type}, ${talent.used} использовано`}
-          actAsExpander={true}
-          showExpandableButton={true}
-          {... this.props.avatar && { avatar : this.props.avatar }}
-        />
-        <CardTitle
-          expandable={true}
-          title={talent.description}
-          subtitle={talent.action_type}
-        />
-        <CardText expandable={true}>
-          Дистанция: {talent.distance}
-          <br/>
-          Цель: {talent.goal}
-          <br/>
-          Атака: {talent.attack}
-          <br/>
-          Урон: {talent.hit}
-          <br/>
-          Эффект: {talent.effect}
-          <br/>
-          Промах: {talent.miss}
-          <br/>
-          Особенности: {talent.speciality}
-          <br/>
-          Использован: {talent.used} раз.
-        </CardText>
-        <CardActions expandable={true}>
-          <FlatButton
-            label='Пробую!'
+        <CardContent>
+          <Typography type='body1'>
+            {talent.limit_type}, {talent.used} использовано
+          </Typography>
+          <Typography type='headline' component='h2'>
+            {talent.title}
+          </Typography>
+          <Typography type='body1'>
+            {talent.action_type}
+          </Typography>
+          <Typography component='p'>
+            {talent.description}
+            <br/>
+            Дистанция: {talent.distance}
+            <br/>
+            Цель: {talent.goal}
+            <br/>
+            Атака: {talent.attack}
+            <br/>
+            Урон: {talent.hit}
+            <br/>
+            Эффект: {talent.effect}
+            <br/>
+            Промах: {talent.miss}
+            <br/>
+            Особенности: {talent.speciality}
+            <br/>
+            Использован: {talent.used} раз.
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button
             onClick={this.handleUseTalentClick}
-          />
+          >Пробую!</Button>
         </CardActions>
       </Card>
     )

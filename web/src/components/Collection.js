@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import {List} from 'material-ui/List'
-import Subheader from 'material-ui/Subheader'
+import List from 'material-ui/List'
+import Subheader from 'material-ui/List/ListSubheader'
 import TextField from 'material-ui/TextField'
 
 import CollectionItem from './CollectionItem'

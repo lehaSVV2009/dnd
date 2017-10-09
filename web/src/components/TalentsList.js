@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Paper from 'material-ui/Paper'
-import Subheader from 'material-ui/Subheader'
+import Subheader from 'material-ui/List/ListSubheader'
 
 import TalentCard from './TalentCard'
 
