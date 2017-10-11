@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import deepOrange from 'material-ui/colors/deepOrange'
+import cyan from 'material-ui/colors/cyan'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
-import red from 'material-ui/colors/red'
 
 import Hero from './Hero'
 
 const theme = createMuiTheme({
   palette: {
-    primary: deepOrange
+    primary: cyan
   },
 })
 

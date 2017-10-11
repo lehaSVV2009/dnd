@@ -14,6 +14,7 @@ export default class CharacteristicList extends Component {
 
     return (
       <Paper>
+        {/* TODO speed */}
         <Collection 
           name='Характеристики'
           items={[

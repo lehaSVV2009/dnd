@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import IconAccount from 'material-ui-icons/AccountCircle'
 import IconFire from 'material-ui-icons/Whatshot'
-import IconHealth from 'material-ui-icons/Favorite'
 import IconSchool from 'material-ui-icons/School'
 
 import CharacteristicsPage from './CharacteristicsPage'
-import ConditionPage from './ConditionPage'
 import Footer from '../components/Footer'
 import PageWrapper from '../components/PageWrapper'
 import ProfilePage from './ProfilePage'
@@ -14,7 +12,6 @@ import TalentsPage from './TalentsPage'
 
 const iconAccount = <IconAccount/>
 const iconFire = <IconFire/>
-const iconHealth = <IconHealth/>
 const iconSchool = <IconSchool/>
 
 export default class MainPage extends Component {
@@ -27,7 +24,6 @@ export default class MainPage extends Component {
 
   handleHeroChange = (newJson) => this.props.onHeroChange(newJson)
   handleAccountTabClick = () => this.setState({ page: 'profile' })
-  handleHealthTabClick = () => this.setState({ page: 'health' })
   handleSkillsTabClick = () => this.setState({ page: 'skills' })
   handleTalentsTabClick = () => this.setState({ page: 'talents' })
   
@@ -36,10 +32,6 @@ export default class MainPage extends Component {
       icon: iconAccount,
       onClick: this.handleAccountTabClick,
       label: 'Профиль'
-    }, {
-      icon: iconHealth,
-      onClick: this.handleHealthTabClick,
-      label: 'Состояние'
     }, {
       icon: iconSchool,
       onClick: this.handleSkillsTabClick,
@@ -65,11 +57,6 @@ export default class MainPage extends Component {
             this.state.page === 'profile' &&
             <ProfilePage
               profile={hero.profile}
-            />
-          }
-          {
-            this.state.page === 'health' &&
-            <ConditionPage
               condition={hero.condition}
               protections={hero.protections}              
               onChange={this.handleHeroChange}
