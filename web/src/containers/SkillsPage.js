@@ -5,14 +5,13 @@ import SkillsList from '../components/SkillsList'
 export default class SkillsPage extends Component {
  
   render() {
-    const { skills } = this.props;
-
-    if (!skills) {
-      return (<div>Навыки отсутствует</div>)
-    }
+    const { characteristics, skills } = this.props;
 
     return (
-      <SkillsList skills={skills}/>
+      <SkillsList
+        characteristics={characteristics}
+        skills={skills}
+      />
     )
   }
 }

@@ -6,7 +6,11 @@ import Collection from './Collection'
 export default class SkillsList extends Component {
 
   render() {
-    const { skills } = this.props;
+    const { characteristics, skills } = this.props;
+
+    if (Array.isArray(characteristics)) {
+      return (<div>Характеристики отсутствуют</div>)
+    }
 
     if (Array.isArray(skills)) {
       return (<div>Навыки отсутствуют</div>)
@@ -15,8 +19,18 @@ export default class SkillsList extends Component {
     return (
       <Paper>
         <Collection 
-          name='Навыки'
+          name='Навыки и Характеристики'
           items={[
+            { name: 'Инициатива', value: characteristics.initiative },
+            { name: 'Скорость', value: characteristics.speed },
+            { name: 'Проницательность', value: characteristics.vision },
+            { name: 'Внимательность', value: characteristics.attentiveness },
+            { name: 'Сила', value: characteristics.strength },
+            { name: 'Телосложение', value: characteristics.constitution },
+            { name: 'Ловкость', value: characteristics.dexterity },
+            { name: 'Интеллект', value: characteristics.intelligence },
+            { name: 'Мудрость', value: characteristics.wisdom },
+            { name: 'Харизма', value: characteristics.charisma },
             { name: 'Акробатика', value: skills.acrobatics }, 
             { name: 'Атлетика', value: skills.athletics }, 
             { name: 'Внимательность', value: skills.perception }, 

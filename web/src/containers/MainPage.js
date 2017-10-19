@@ -3,7 +3,6 @@ import IconAccount from 'material-ui-icons/AccountCircle'
 import IconFire from 'material-ui-icons/Whatshot'
 import IconSchool from 'material-ui-icons/School'
 
-import CharacteristicsPage from './CharacteristicsPage'
 import Footer from '../components/Footer'
 import PageWrapper from '../components/PageWrapper'
 import ProfilePage from './ProfilePage'
@@ -64,16 +63,10 @@ export default class MainPage extends Component {
           }
           {
             this.state.page === 'skills' &&
-            <div>
-              <CharacteristicsPage
-                characteristics={hero.characteristics}
-              />
-              <br/>
-              <SkillsPage
-                skills={hero.skills}
-              />
-              <br/>
-            </div>
+            <SkillsPage
+              characteristics={hero.characteristics}
+              skills={hero.skills}
+            />
           }
           {
             this.state.page === 'talents' &&

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import List from 'material-ui/List'
 import Subheader from 'material-ui/List/ListSubheader'
 import TextField from 'material-ui/TextField'
 
@@ -38,21 +37,19 @@ export default class Collection extends Component {
       <div>
         <Subheader>{this.props.name}</Subheader>
         <TextField
-          hintText='Поиск'
+          label='Поиск'
           value={this.state.search}
           onChange={this.handleSearchTextChange}
         />
-        <List className='left'>
-          {
-            items.map((item, index) => (
-              <CollectionItem
-                key={index}
-                name={item.name}
-                value={item.value}
-              />
-            ))
-          }
-        </List>
+        {
+          items.map((item, index) => (
+            <CollectionItem
+              key={index}
+              name={item.name}
+              value={item.value}
+            />
+          ))
+        }
       </div>
     )
   }
