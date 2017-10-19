@@ -12,7 +12,7 @@ export default class Profile extends Component {
           image={profile.image}
           title={profile.name}
           subtitle={profile.category + '-' + profile.race}
-          level={`Уровень ${profile.level}. Опыт ${profile.experience}`}
+          experience={profile.experience}
         />
         <ProfileDescription 
           additionalNotes={Array.isArray(profile.languages) ? 'Языки: ' + profile.languages.join(', ') : ''}

@@ -1,48 +1,32 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import Card, { CardContent, CardMedia } from 'material-ui/Card'
-import Typography from 'material-ui/Typography'
-import { withStyles } from 'material-ui/styles'
+import List, {ListItem, ListItemText} from 'material-ui/List'
+import Paper from 'material-ui/Paper'
 
-const styles = theme => ({
-  card: {
-    display: 'flex'
-  },
-  cover: {
-    width: 150
-  }
-})
+import ExperienceProgress from './ExperienceProgress'
+import BadgedAvatar from './BadgedAvatar'
+import * as DndUtils from '../utils/dndUtils'
 
-class ProfileInfo extends Component {
+export default class ProfileInfo extends Component {
   render() {
-    const { classes, image, title, subtitle, level } = this.props
+    const { experience, image, title, subtitle } = this.props
     return (
-      <Card className={classes.card}>
-        <CardMedia
-          className={classes.cover}
-          image={image}
-        />
-        <div>
-          <CardContent>
-            <Typography type='headline'>
-              {title}
-            </Typography>
-            <Typography type='subheading' color='secondary'>
-              {subtitle}
-            </Typography>
-            <Typography paragraph type='body2'>
-              {level}
-            </Typography>
-          </CardContent>
-        </div>
-      </Card>
+      <Paper>
+        <List className='left'>
+          <ListItem>
+            <BadgedAvatar 
+              image={image}
+              badgeContent={DndUtils.calculateLevel(experience)}
+            />
+            <ListItemText 
+              primary={title} 
+              secondary={subtitle} 
+            />
+            <ExperienceProgress 
+              experience={experience}
+            />
+          </ListItem>
+        </List>
+      </Paper>
     )
   }
 }
-
-ProfileInfo.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
-}
-
-export default withStyles(styles, { withTheme: true })(ProfileInfo)
