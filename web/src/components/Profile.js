@@ -11,7 +11,6 @@ export default class Profile extends Component {
     return (
       <div>
         <ProfileInfo
-          image={profile.image}
           title={profile.name}
           subtitle={profile.category + '-' + profile.race}
           experience={profile.experience}
@@ -20,6 +19,7 @@ export default class Profile extends Component {
         <ProfileDescription 
           additionalNotes={Array.isArray(profile.languages) ? 'Языки: ' + profile.languages.join(', ') : ''}
           description={profile.description}
+          image={profile.image}
         />
       </div>
     )

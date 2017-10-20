@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { withStyles } from 'material-ui/styles'
-import Card, { CardContent } from 'material-ui/Card'
+import Card, { CardContent, CardMedia } from 'material-ui/Card'
 import Collapse from 'material-ui/transitions/Collapse'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import IconButton from 'material-ui/IconButton'
@@ -17,6 +17,9 @@ const styles = theme => ({
   },
   expandOpen: {
     transform: 'rotate(180deg)',
+  },
+  media: {
+    height: 350,
   }
 })
 
@@ -28,7 +31,7 @@ class ProfileDescription extends Component {
   }
 
   render() {
-    const { additionalNotes, classes, description } = this.props
+    const { additionalNotes, classes, description, image } = this.props
     return (
       <div>
         <IconButton
@@ -42,6 +45,10 @@ class ProfileDescription extends Component {
         </IconButton>
         <Card className='left'>
           <Collapse in={this.state.expanded} transitionDuration='auto' unmountOnExit>
+            <CardMedia
+              className={classes.media}
+              image={image}
+            />
             <CardContent>
               <Typography paragraph>
                 {additionalNotes}
