@@ -53,7 +53,7 @@ export default class ExperienceProgress extends Component {
   render() {
     const { experience, percentage } = this.state
     return (
-      <span>
+      <div>
         <ButtonBase
           onClick={this.handleProgressClick}
         >
@@ -61,9 +61,6 @@ export default class ExperienceProgress extends Component {
             percentage={percentage}
             initialAnimation={true}
             textForPercentage={() => `${experience}`}
-            classForPercentage={(percentage) => {
-              return percentage > 50 ? 'complete' : 'incomplete';
-            }}
           />
         </ButtonBase>
         <FormDialog 
@@ -79,7 +76,7 @@ export default class ExperienceProgress extends Component {
             type='number'
           />
         </FormDialog>
-      </span>
+      </div>
     )
   }
 }

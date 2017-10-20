@@ -17,7 +17,7 @@ export default class FormDialog extends React.Component {
       <Dialog 
         open={this.props.open} 
         onRequestClose={this.handleClose}
-        onKeyDown={(event) => event.key == 'Enter' && this.handleSave()}
+        onKeyDown={(event) => event.key === 'Enter' && this.handleSave()}
       >
         <DialogTitle>{this.props.title}</DialogTitle>
         <DialogContent>
