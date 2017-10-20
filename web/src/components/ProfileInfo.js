@@ -7,6 +7,9 @@ import BadgedAvatar from './BadgedAvatar'
 import * as DndUtils from '../utils/dndUtils'
 
 export default class ProfileInfo extends Component {
+
+  handleChange = (newJson) => this.props.onChange(newJson)  
+  
   render() {
     const { experience, image, title, subtitle } = this.props
     return (
@@ -23,6 +26,7 @@ export default class ProfileInfo extends Component {
             />
             <ExperienceProgress 
               experience={experience}
+              onChange={this.handleChange}
             />
           </ListItem>
         </List>

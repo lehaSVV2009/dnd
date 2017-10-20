@@ -874,7 +874,7 @@ babel-plugin-transform-strict-mode@^6.24.1:
     babel-runtime "^6.22.0"
     babel-types "^6.24.1"
 
-babel-polyfill@^6.26.0:
+babel-polyfill@6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
   dependencies:
@@ -5348,9 +5348,9 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-circular-progressbar@0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/react-circular-progressbar/-/react-circular-progressbar-0.2.2.tgz#e32bf3e90cb00628f05f654ae9b2ee5679e601fe"
+react-circular-progressbar@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-circular-progressbar/-/react-circular-progressbar-0.5.0.tgz#74b67862431f3fa5e46f380874e4284f5f321b9a"
   dependencies:
     prop-types "^15.5.10"
 

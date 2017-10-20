@@ -17,6 +17,7 @@ export default class ProfilePage extends Component {
       <div>
         <Profile
           profile={profile}
+          onChange={this.handleChange}
         />
         <Condition 
           condition={condition}
