@@ -9,4 +9,5 @@ cache:
 script: 
   - cd web
   - yarn install
+  - pwd
   - yarn build
