@@ -1,95 +1,135 @@
 # Dungeons and Dragons app
 
-Web app for manipulating player cards in Dungeons and Dragons
+Web app for manipulating character sheets in Dungeons and Dragons
 
 ## Getting Started
 
+Open [live demo](http://dungeons-and-dragons.tk)
+
+Have fun :smile
+
+These features are available:
+
+1. Show character info (profile, current condition, skills and characteristics, talents).
+2. Update character condition (experience, health, hill etc.)
+3. Increment counter of used talents.
+
+### Prerequisites
+
+```
+brew install mongodb
+```
+```
+brew install yarn
+```
+
+### Installing
+
+Configurations of API-Database connection are located in `api/src/main/resources/application.yml`
+Configurations of Client-API connection are located in `web/.env`
 
 ```
 git clone https://github.com/lehaSVV2009/dnd.git
 ```
 
+Run Database (MongoDB)
 ```
-cd dnd
-```
-```
-./gradlew build
-```
-```
-docker-compose up
+mongodb
 ```
 
-# TODO Improve README
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
+Build and run API (Spring Boot)
 ```
-Give examples
+./gradlew bootRun
 ```
 
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
+Build and run web-client app (ReactJS)
 ```
-Give the example
+cd web
 ```
-
-And repeat
-
 ```
-until finished
+yarn start
+```
+or 
+```
+npm i
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+Open following links:
+* API - `localhost:8080`
+* API Swagger UI - `localhost:8080/swagger-ui.html`
+* Web Client - `localhost:3000`
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+### API smoke tests
 
 ```
-Give an example
+./gradlew test
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+### Web client unit tests
 
 ```
-Give an example
+cd web
+```
+
+```
+yarn test
 ```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+```
+./gradlew build
+```
+
+```
+cd web
+```
+
+```
+yarn build
+```
+
+```
+cd ..
+```
+
+```
+docker-compose up
+```
+
+Docker images:
+* API - https://hub.docker.com/r/lehasvv2009/dnd-api/
+* Client - https://hub.docker.com/r/lehasvv2009/dnd-web/
+
+Docker image with API and Database (not perfect...) is deployed on AWS EC2.
+Web statics is deployed on AWS S3.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Gradle](https://gradle.org/) builds API
+* [Yarn](https://yarnpkg.com/) builds web client
+* [Docker](https://www.docker.com/) builds images to deploy
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Help wanted :smile
+
+In plan:
+* Fix money updating. It is not possible to update silver decimals, only gold integers. (200.23 -> 200.45 is not supported yet).
+* Add ability to handle talents within DnD scenes and days.
+* Add views to add new character.
+* Use separate tool (Travis/Jenkins/Ansible) for automatic deployment on AWS.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+No stress about versioning :smile
+Application is still too small for it.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Alex Soroka** *
 
 ## License
 
@@ -97,6 +137,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+Great thanks [Katerina Draenkova](https://github.com/KaterinaDraenkova) for inspiration!
