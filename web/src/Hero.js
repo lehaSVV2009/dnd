@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Trans } from 'react-i18next'
 
 import * as api from './API'
 import MainPage from './containers/MainPage'
@@ -44,7 +45,7 @@ export default class Hero extends Component {
     
     // Show loading bar if HTTP request is not completed
     if (heroLoading) {
-      return (<div>Loading...</div>)
+      return (<Trans>Загрузка</Trans>)
     }
 
     // Show error if HTTP request failed
@@ -53,7 +54,7 @@ export default class Hero extends Component {
     }
 
     if (!hero) {
-      return (<div>Герой отсутствует</div>)
+      return (<Trans>Герой отсутствует</Trans>)
     }
 
     return (

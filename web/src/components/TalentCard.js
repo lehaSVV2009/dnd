@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Button from 'material-ui/Button'
 import Card, { CardActions, CardContent } from 'material-ui/Card'
+import { Trans } from 'react-i18next'
 import Typography from 'material-ui/Typography'
 
 export default class TalentCard extends Component {
@@ -11,45 +12,47 @@ export default class TalentCard extends Component {
     const { talent } = this.props
 
     if (!talent) {
-      return (<div>Таланты отсутствуют</div>)
+      return (<Trans parent='span'>Таланты отсутствуют</Trans>)
     }
 
     return (
       <Card>
         <CardContent>
           <Typography type='body1'>
-            {talent.limit_type}, {talent.used} использовано
+            {talent.limit_type}, {talent.used} <Trans parent='span'>использовано</Trans>
           </Typography>
           <Typography type='headline' component='h2'>
             {talent.title}
           </Typography>
           <Typography type='body1'>
-            {talent.action_type}
+            <i>{talent.action_type}</i>
           </Typography>
           <Typography component='p'>
             {talent.description}
             <br/>
-            Дистанция: {talent.distance}
+            <Trans parent='span'>Дистанция</Trans>: <b>{talent.distance}</b>
             <br/>
-            Цель: {talent.goal}
+            <Trans parent='span'>Цель</Trans>: <b>{talent.goal}</b>
             <br/>
-            Атака: {talent.attack}
+            <Trans parent='span'>Атака</Trans>: <b>{talent.attack}</b>
             <br/>
-            Урон: {talent.hit}
+            <Trans parent='span'>Урон</Trans>: <b>{talent.hit}</b>
             <br/>
-            Эффект: {talent.effect}
+            <Trans parent='span'>Эффект</Trans>: <b>{talent.effect}</b>
             <br/>
-            Промах: {talent.miss}
+            <Trans parent='span'>Промах</Trans>: <b>{talent.miss}</b>
             <br/>
-            Особенности: {talent.speciality}
+            <Trans parent='span'>Особенности</Trans>: <b>{talent.speciality}</b>
             <br/>
-            Использован: {talent.used} раз.
+            <Trans parent='span'>Использовано</Trans>: <b>{talent.used}</b>
           </Typography>
         </CardContent>
         <CardActions>
           <Button
             onClick={this.handleUseTalentClick}
-          >Пробую!</Button>
+          >
+            <Trans parent='span'>Пробую</Trans>
+          </Button>
         </CardActions>
       </Card>
     )

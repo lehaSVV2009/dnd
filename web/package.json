@@ -10,12 +10,16 @@
     "axios": "0.16.2",
     "babel-polyfill": "6.26.0",
     "classnames": "2.2.5",
+    "i18next": "10.0.3",
+    "i18next-browser-languagedetector": "2.0.0",
+    "i18next-locize-backend": "1.0.0",
     "material-ui": "1.0.0-beta.16",
     "material-ui-icons": "1.0.0-beta.15",
     "react": "16.0.0",
     "react-circular-progressbar": "0.5.0",
     "react-dom": "16.0.0",
     "react-flexbox-grid": "1.1.5",
+    "react-i18next": "6.0.6",
     "react-scripts": "1.0.14"
   },
   "scripts": {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Subheader from 'material-ui/List/ListSubheader'
 import TextField from 'material-ui/TextField'
+import { Trans } from 'react-i18next'
 
 import CollectionItem from './CollectionItem'
 
@@ -30,14 +31,14 @@ export default class Collection extends Component {
     const { items } = this.state;
 
     if (!Array.isArray(items)) {
-      return (<div>Список пустой</div>)
+      return (<Trans>Список пустой</Trans>)
     }
 
     return (
       <div>
         <Subheader>{this.props.name}</Subheader>
         <TextField
-          label='Поиск'
+          label={<Trans>Поиск</Trans>}
           value={this.state.search}
           onChange={this.handleSearchTextChange}
         />

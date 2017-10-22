@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Trans } from 'react-i18next'
 
 import ProfileDescription from './ProfileDescription'
 import ProfileInfo from './ProfileInfo'
@@ -8,6 +9,11 @@ export default class Profile extends Component {
 
   render() {
     const { profile } = this.props
+
+    if (!profile) {
+      return (<Trans>Профиль отсутствует</Trans>)
+    }
+
     return (
       <div>
         <ProfileInfo
@@ -17,7 +23,11 @@ export default class Profile extends Component {
           onChange={this.handleChange}
         />
         <ProfileDescription 
-          additionalNotes={Array.isArray(profile.languages) ? 'Языки: ' + profile.languages.join(', ') : ''}
+          additionalNotes={
+            Array.isArray(profile.languages)
+             ? <span><Trans parent='span'>Языки</Trans>: {profile.languages.join(', ')}</span> 
+             : <span/>
+          }
           description={profile.description}
           image={profile.image}
         />

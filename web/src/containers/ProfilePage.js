@@ -9,10 +9,6 @@ export default class ProfilePage extends Component {
   render() {
     const { condition, profile, protections } = this.props;
 
-    if (!profile) {
-      return (<div>Профиль отсутствует</div>)
-    }
-
     return (
       <div>
         <Profile

@@ -9,10 +9,6 @@ export default class TalentsPage extends Component {
   render() {
     const { talents } = this.props;
 
-    if (!Array.isArray(talents)) {
-      return (<div>Таланты отсутствуют</div>)
-    }
-
     return (
       <TalentsList
         talents={talents}

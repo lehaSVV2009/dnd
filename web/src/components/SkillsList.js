@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Paper from 'material-ui/Paper'
+import { Trans } from 'react-i18next'
 
 import Collection from './Collection'
 
@@ -9,44 +10,44 @@ export default class SkillsList extends Component {
     const { characteristics, skills } = this.props;
 
     if (Array.isArray(characteristics)) {
-      return (<div>Характеристики отсутствуют</div>)
+      return (<Trans>Характеристики отсутствуют</Trans>)
     }
 
     if (Array.isArray(skills)) {
-      return (<div>Навыки отсутствуют</div>)
+      return (<Trans>Навыки отсутствуют</Trans>)
     }
 
     return (
       <Paper>
         <Collection 
-          name='Навыки и Характеристики'
+          name={<Trans>Навыки и Характеристики</Trans>}
           items={[
-            { name: 'Инициатива', value: characteristics.initiative },
-            { name: 'Скорость', value: characteristics.speed },
-            { name: 'Проницательность', value: characteristics.vision },
-            { name: 'Внимательность', value: characteristics.attentiveness },
-            { name: 'Сила', value: characteristics.strength },
-            { name: 'Телосложение', value: characteristics.constitution },
-            { name: 'Ловкость', value: characteristics.dexterity },
-            { name: 'Интеллект', value: characteristics.intelligence },
-            { name: 'Мудрость', value: characteristics.wisdom },
-            { name: 'Харизма', value: characteristics.charisma },
-            { name: 'Акробатика', value: skills.acrobatics }, 
-            { name: 'Атлетика', value: skills.athletics }, 
-            { name: 'Внимательность', value: skills.perception }, 
-            { name: 'Воровство', value: skills.stealing }, 
-            { name: 'Выносливость', value: skills.endurance }, 
-            { name: 'Запугивание', value: skills.intimidation }, 
-            { name: 'Знание улиц', value: skills.investigation }, 
-            { name: 'История', value: skills.history }, 
-            { name: 'Магия', value: skills.magic }, 
-            { name: 'Обман', value: skills.deception }, 
-            { name: 'Подземелья', value: skills.dungeons }, 
-            { name: 'Природа', value: skills.nature }, 
-            { name: 'Религия', value: skills.religion }, 
-            { name: 'Скрытность', value: skills.stealth }, 
-            { name: 'Проницательность', value: skills.insights }, 
-            { name: 'Целительство', value: skills.medicine }
+            { name: <Trans>Инициатива</Trans>, value: characteristics.initiative },
+            { name: <Trans>Скорость</Trans>, value: characteristics.speed },
+            { name: <Trans>Проницательность</Trans>, value: characteristics.vision },
+            { name: <Trans>Внимательность</Trans>, value: characteristics.attentiveness },
+            { name: <Trans>Сила</Trans>, value: characteristics.strength },
+            { name: <Trans>Телосложение</Trans>, value: characteristics.constitution },
+            { name: <Trans>Ловкость</Trans>, value: characteristics.dexterity },
+            { name: <Trans>Интеллект</Trans>, value: characteristics.intelligence },
+            { name: <Trans>Мудрость</Trans>, value: characteristics.wisdom },
+            { name: <Trans>Харизма</Trans>, value: characteristics.charisma },
+            { name: <Trans>Акробатика</Trans>, value: skills.acrobatics }, 
+            { name: <Trans>Атлетика</Trans>, value: skills.athletics }, 
+            { name: <Trans>Внимательность</Trans>, value: skills.perception }, 
+            { name: <Trans>Воровство</Trans>, value: skills.stealing }, 
+            { name: <Trans>Выносливость</Trans>, value: skills.endurance }, 
+            { name: <Trans>Запугивание</Trans>, value: skills.intimidation }, 
+            { name: <Trans>Знание улиц</Trans>, value: skills.investigation }, 
+            { name: <Trans>История</Trans>, value: skills.history }, 
+            { name: <Trans>Магия</Trans>, value: skills.magic }, 
+            { name: <Trans>Обман</Trans>, value: skills.deception }, 
+            { name: <Trans>Подземелья</Trans>, value: skills.dungeons }, 
+            { name: <Trans>Природа</Trans>, value: skills.nature }, 
+            { name: <Trans>Религия</Trans>, value: skills.religion }, 
+            { name: <Trans>Скрытность</Trans>, value: skills.stealth }, 
+            { name: <Trans>Проницательность</Trans>, value: skills.insights }, 
+            { name: <Trans>Целительство</Trans>, value: skills.medicine }
           ]}
         />
       </Paper>

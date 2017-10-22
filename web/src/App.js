@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import cyan from 'material-ui/colors/cyan'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+import { translate } from 'react-i18next'
 
+import * as I18N from './i18n'
 import Hero from './Hero'
 
 const theme = createMuiTheme({
@@ -10,7 +12,7 @@ const theme = createMuiTheme({
   },
 })
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
@@ -19,3 +21,5 @@ export default class App extends Component {
     )
   }
 }
+
+export default translate(I18N.COMMON_TRANSLATIONS)(App)

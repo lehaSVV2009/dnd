@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import IconAccount from 'material-ui-icons/AccountCircle'
 import IconFire from 'material-ui-icons/Whatshot'
 import IconSchool from 'material-ui-icons/School'
+import { Trans } from 'react-i18next'
 
 import Footer from '../components/Footer'
 import PageWrapper from '../components/PageWrapper'
@@ -30,15 +31,15 @@ export default class MainPage extends Component {
     return [{
       icon: iconAccount,
       onClick: this.handleAccountTabClick,
-      label: 'Профиль'
+      label: <Trans>Профиль</Trans>
     }, {
       icon: iconSchool,
       onClick: this.handleSkillsTabClick,
-      label: 'Навыки'
+      label: <Trans>Навыки</Trans>
     }, {
       icon: iconFire,
       onClick: this.handleTalentsTabClick,
-      label: 'Таланты'
+      label: <Trans>Таланты</Trans>
     }]
   }
 
@@ -46,7 +47,7 @@ export default class MainPage extends Component {
     const { hero } = this.props
 
     if (!hero) {
-      return (<div>Герой отсутствует</div>)
+      return (<Trans>Герой отсутствует</Trans>)
     }
 
     return (

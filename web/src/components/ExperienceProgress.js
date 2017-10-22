@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ButtonBase from 'material-ui/ButtonBase'
 import CircularProgressbar from 'react-circular-progressbar'
 import TextField from 'material-ui/TextField'
+import { Trans } from 'react-i18next'
 
 import FormDialog from './FormDialog'
 import * as DndUtils from '../utils/dndUtils'
@@ -64,13 +65,13 @@ export default class ExperienceProgress extends Component {
           />
         </ButtonBase>
         <FormDialog 
-          title='Опыт'
+          title={<Trans>Опыт</Trans>}
           open={this.state.open}
           onClose={this.handleFormDialogClose}
           onSave={this.handleExperienceSave}
         >
           <TextField
-            label='Добавить опыт'
+            label={<Trans>Добавить опыт</Trans>}
             value={this.state.addedExperience}
             onChange={this.handleExperienceChange}
             type='number'
