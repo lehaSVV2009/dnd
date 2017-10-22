@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.ResultActions
 import spock.lang.Specification
+import spock.lang.Ignore
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -24,6 +25,7 @@ class HeroApiTest extends Specification {
   @Autowired
   MockMvc mvc
 
+  @Ignore
   def 'should CRUD Hero'() {
     when:
     def responses = [
