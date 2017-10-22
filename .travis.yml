@@ -6,4 +6,4 @@ before_install:
   - export PATH=$HOME/.yarn/bin:$PATH
 cache:
   yarn: true
-script: cd web && yarn install
+script: cd web && yarn build
