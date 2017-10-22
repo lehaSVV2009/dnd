@@ -6,7 +6,7 @@ Web app for manipulating character sheets in Dungeons and Dragons
 
 Open [live demo](http://dungeons-and-dragons.tk)
 
-Have fun :smile
+Have fun :smile:
 
 These features are available:
 
@@ -17,16 +17,19 @@ These features are available:
 ### Prerequisites
 
 ```
-brew install mongodb
-```
-```
+# DB
+brew install mongodb 
+# API
+brew cask install java
+# Web
 brew install yarn
 ```
 
 ### Installing
 
-Configurations of API-Database connection are located in `api/src/main/resources/application.yml`
-Configurations of Client-API connection are located in `web/.env`
+Configurations of `API`-`Database` connection are located in `api/src/main/resources/application.yml`.
+
+Configurations of `Client`-`API` connection are located in `web/.env`.
 
 ```
 git clone https://github.com/lehaSVV2009/dnd.git
@@ -45,12 +48,11 @@ Build and run API (Spring Boot)
 Build and run web-client app (ReactJS)
 ```
 cd web
-```
-```
 yarn start
 ```
 or 
 ```
+cd web
 npm i
 ```
 
@@ -71,31 +73,22 @@ Open following links:
 
 ```
 cd web
-```
-
-```
 yarn test
 ```
 
 ## Deployment
 
+See `.travis.yml`
+Deploy statics on AWS S3
+Deploy API docker images on AWS EC2
+
 ```
 ./gradlew build
-```
 
-```
 cd web
-```
-
-```
 yarn build
-```
 
-```
 cd ..
-```
-
-```
 docker-compose up
 ```
 
@@ -108,28 +101,30 @@ Web statics is deployed on AWS S3.
 
 ## Built With
 
+* [Travis](https://travis-ci.org/) CI and deployment 
 * [Gradle](https://gradle.org/) builds API
 * [Yarn](https://yarnpkg.com/) builds web client
 * [Docker](https://www.docker.com/) builds images to deploy
 
 ## Contributing
 
-Help wanted :smile
+Help wanted :smile:
 
 In plan:
 * Fix money updating. It is not possible to update silver decimals, only gold integers. (200.23 -> 200.45 is not supported yet).
 * Add ability to handle talents within DnD scenes and days.
 * Add views to add new character.
-* Use separate tool (Travis/Jenkins/Ansible) for automatic deployment on AWS.
+* Use Travis for automatic deployment on AWS.
 
 ## Versioning
 
+`0.1.0`
 No stress about versioning :smile
 Application is still too small for it.
 
 ## Authors
 
-* **Alex Soroka** *
+**Alex Soroka** - https://github.com/lehaSVV2009
 
 ## License
 
