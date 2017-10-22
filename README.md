@@ -4,7 +4,7 @@ Web app for manipulating character sheets in Dungeons and Dragons
 
 ## Getting Started
 
-Open [live demo](http://dungeons-and-dragons.tk){:target="_blank"}.
+<a href="http://dungeons-and-dragons.tk" target="_blank">Live demo</a>
 
 Have fun :smile:
 
