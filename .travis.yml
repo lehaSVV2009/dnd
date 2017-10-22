@@ -6,8 +6,16 @@ before_install:
   - export PATH=$HOME/.yarn/bin:$PATH
 cache:
   yarn: true
-script: 
+script:
   - cd web
   - yarn install
-  - pwd
   - yarn build
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: dungeons.and.dragons
+  skip_cleanup: true
+  region: us-east-1
+  acl: public_read
+  local_dir: build
