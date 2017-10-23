@@ -13,6 +13,7 @@ These features are available:
 1. Show character info (profile, current condition, skills and characteristics, talents).
 2. Update character condition (experience, health, hill etc.)
 3. Increment counter of used talents.
+4. Change localization (add `?lng=en`, `?lng=de` or `?lng=ru` to query param).
 
 ### Prerequisites
 
@@ -110,16 +111,14 @@ Web statics is deployed on AWS S3.
 
 Help wanted :smile:
 
-In plan:
-* Fix money updating. It is not possible to update silver decimals, only gold integers. (200.23 -> 200.45 is not supported yet).
-* Add ability to handle talents within DnD scenes and days.
-* Add views to add new character.
-* Use Travis for automatic deployment on AWS.
+If you want to contribute - just create issues and/or pull requests and let's discuss there. No hard rules.
 
 ## Versioning
 
 `0.1.0`
-No stress about versioning :smile
+
+No stress about versioning :smile:
+
 Application is still too small for it.
 
 ## Authors
