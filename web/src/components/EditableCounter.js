@@ -7,40 +7,40 @@ import IconPlus from 'material-ui-icons/AddCircleOutline'
 import { withStyles } from 'material-ui/styles'
 
 const styles = theme => ({
-  slider: {
+  counter: {
     display: 'flex'
   }
 })
 
-class LabeledSlider extends Component {
+class EditableCounter extends Component {
   state = {
-    slider: this.props.value
+    counter: this.props.value
   }
 
   handleMinusButtonClick = (event) => {
-    if (this.state.slider > (this.props.min || 0)) {
-      this.handleSliderChange(event, this.state.slider - 1)
+    if (this.state.counter > (this.props.min || 0)) {
+      this.handleCounterChange(event, this.state.counter - 1)
     }
   }
 
   handlePlusButtonClick = (event) => {
-    if (this.state.slider < (this.props.max || 100)) {
-      this.handleSliderChange(event, this.state.slider + 1)
+    if (this.state.counter < (this.props.max || 100)) {
+      this.handleCounterChange(event, this.state.counter + 1)
     }
   }
 
-  handleSliderChange = (event, value) => {
-    this.setState({ slider: value })
+  handleCounterChange = (event, value) => {
+    this.setState({ counter: value })
     this.props.onChange(value);
   }
 
   render() {
     return (
-      <span className={this.props.classes.slider}>
+      <span className={this.props.classes.counter}>
         <IconButton onClick={this.handleMinusButtonClick}>
           <IconMinus />
         </IconButton>
-        <Chip label={this.state.slider}/>
+        <Chip label={this.state.counter}/>
         <IconButton onClick={this.handlePlusButtonClick}>
           <IconPlus />
         </IconButton>
@@ -49,9 +49,9 @@ class LabeledSlider extends Component {
   }
 }
 
-LabeledSlider.propTypes = {
+EditableCounter.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 }
 
-export default withStyles(styles, { withTheme: true })(LabeledSlider)
+export default withStyles(styles, { withTheme: true })(EditableCounter)

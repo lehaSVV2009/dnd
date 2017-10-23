@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Avatar from 'material-ui/Avatar'
 import List, {ListItem, ListItemText} from 'material-ui/List'
 
-import LabeledSlider from './LabeledSlider'
+import EditableCounter from './EditableCounter'
 
 export default class ConditionItem extends Component {
 
@@ -22,7 +22,7 @@ export default class ConditionItem extends Component {
             {this.props.icon}
           </Avatar>
           <ListItemText primary={this.props.name} secondary={this.props.description} />
-          <LabeledSlider
+          <EditableCounter
             min={min}
             max={max}
             step={step}

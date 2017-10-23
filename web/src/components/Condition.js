@@ -12,10 +12,42 @@ import Subheader from 'material-ui/List/ListSubheader'
 import { Trans } from 'react-i18next'
 
 import ConditionItem from './ConditionItem'
+import MoneyConditionItem from './MoneyConditionItem'
+import MoneyFormDialog from './MoneyFormDialog'
 
 export default class Condition extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      money: props.condition.money,
+      openMoneyDialog: false
+    }
+  }
 
   handleChange = (newJson) => this.props.onChange(newJson)
+
+  handleOpenMoneyDialog = () => {
+    this.setState({
+      openMoneyDialog: true
+    })
+  }
+
+  handleSaveMoney = (value) => {
+    if (value) {
+      const newMoney = this.state.money + value
+      this.handleChange({ condition: { money: newMoney }})
+      this.setState({ 
+        openMoneyDialog: false,
+        money: newMoney,
+      })
+    }
+  }
+
+  handleCloseMoneyDialog = () => {
+    this.setState({
+      openMoneyDialog: false
+    })
+  }
 
   render() {
     const { condition, protections } = this.props;
@@ -28,6 +60,17 @@ export default class Condition extends Component {
       <Paper>
         <Subheader><Trans>Состояние</Trans></Subheader>
         <br/>
+        <MoneyConditionItem
+          name={<Trans>Деньги</Trans>}
+          icon={<MoneyIcon />}
+          value={this.state.money}
+          onEditClick={this.handleOpenMoneyDialog}
+        />
+        <MoneyFormDialog
+          open={this.state.openMoneyDialog}
+          onSave={this.handleSaveMoney}
+          onClose={this.handleCloseMoneyDialog}
+        />
         <ConditionItem
           name={<Trans>ХП</Trans>}
           max={condition.max_hit_points}
@@ -50,13 +93,6 @@ export default class Condition extends Component {
           value={3 - condition.death_save_failures}
           icon={<DeathIcon />}
           onChange={(value) => this.handleChange({ condition: { death_save_failures: 3 - value }})}
-        />
-        <ConditionItem
-          name={<Trans>Деньги</Trans>}
-          max={10000}
-          value={condition.money}
-          icon={<MoneyIcon />}
-          onChange={(value) => this.handleChange({ condition: { money: value }})}
         />
         <ConditionItem
           name={<Trans>КД</Trans>}
