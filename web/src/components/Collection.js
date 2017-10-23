@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles'
 import Avatar from 'material-ui/Avatar'
 import Chip from 'material-ui/Chip'
 import Subheader from 'material-ui/List/ListSubheader'
+import TextField from 'material-ui/TextField'
 import { Trans } from 'react-i18next'
 
 const styles = theme => ({
@@ -18,9 +19,32 @@ const styles = theme => ({
 })
 
 class Collection extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      search: '',
+      items: props.items,
+    }
+  }
+
+  handleSearchTextChange = (event) => {
+    const searchText = event.target.value
+    this.setState({
+      search: searchText,
+      items: !searchText ? this.props.items : this.props.items.filter(
+        item => this.containsSearchText(item.name, searchText) || this.containsSearchText(item.value + '', searchText))
+    })
+  }
+
+  containsSearchText = (text, searchText) => 
+    text
+    && typeof text === 'string'
+    && searchText 
+    && text.toLowerCase().includes(searchText.toLowerCase())
 
   render() {
-    const { classes, items } = this.props;
+    const { classes } = this.props
+    const { items } = this.state
 
     if (!Array.isArray(items)) {
       return (<Trans>Список пустой</Trans>)
@@ -29,6 +53,11 @@ class Collection extends Component {
     return (
       <div>
         <Subheader>{this.props.name}</Subheader>
+        <TextField
+          label={<Trans>Поиск</Trans>}
+          value={this.state.search}
+          onChange={this.handleSearchTextChange}
+        />
         <div className={classes.row}>
           {
             items.map((item, index) => (
@@ -48,6 +77,6 @@ class Collection extends Component {
 
 Collection.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
 
 export default withStyles(styles)(Collection)
