@@ -12,8 +12,9 @@ These features are available:
 
 1. Show character info (profile, current condition, skills and characteristics, talents).
 2. Update character condition (experience, health, hill etc.)
-3. Increment counter of used talents.
-4. Change localization (add `?lng=en`, `?lng=de` or `?lng=ru` to query param).
+3. Simple search for skills and characteristics.
+4. Increment counter of used talents.
+5. Change localization (add `?lng=en`, `?lng=de` or `?lng=ru` to query param).
 
 ### Prerequisites
 
@@ -131,4 +132,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-Great thanks [Katerina Draenkova](https://github.com/KaterinaDraenkova) for inspiration!
+Great thanks [Katerina Draenkova](https://github.com/KaterinaDraenkova) and [Pavel Evleev](https://github.com/PavelEvleev) for inspiration!
