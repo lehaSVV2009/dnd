@@ -1,6 +1,11 @@
 package kadet.dnd.api
 
+import org.springframework.data.annotation.Id
+
 class Talent {
+
+    @Id
+    val id: String? = null
 
     /**
      * By time limiting (limited per day)
@@ -25,7 +30,7 @@ class Talent {
     /**
      * Required instruments or skills
      */
-    val requirements: List<String> = listOf()
+    val requirements: Set<String> = setOf()
 
     /**
      * Description of how many enemies can be damaged
@@ -66,10 +71,4 @@ class Talent {
      * Minimum hero level to get a talent
      */
     val level: Int = 1
-
-    // TODO move outside talent - wrong model
-    /**
-     * Counts how many times hero used the talent
-     */
-    val used: Int = 0
 }

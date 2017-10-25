@@ -1,6 +1,7 @@
 package kadet.dnd.api
 
 import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.mapping.DBRef
 
 /**
  * Simple hero metadata
@@ -14,32 +15,33 @@ class Hero {
     val id: String? = null
 
     /**
-     * Основная информация
+     * Main info
      */
     val profile: Profile? = null
 
     /**
-     * Состояние
+     * Current state
      */
     val condition: Condition? = null
 
     /**
-     * Защиты
+     * Armor class, will etc.
      */
     val protections: Protections? = null
 
     /**
-     * Характеристики
+     * Speed, initiative etc.
      */
     val characteristics: Characteristics? = null
 
     /**
-     * Навыки
+     * Acrobatics, athletics etc.
      */
     val skills: Skills? = null
 
     /**
-     * Таланты
+     * Talents of a hero
      */
-    val talents: List<Talent> = listOf()
+    @DBRef
+    val talents: Set<Talent> = setOf()
 }
