@@ -9,7 +9,6 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Stepwise
 
-import static kadet.dnd.api.SceneApiTest.createScene
 import static kadet.dnd.api.TestUtils.parseJson
 import static kadet.dnd.api.TestUtils.response
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*
@@ -56,18 +55,14 @@ class DayApiTest extends Specification {
   }
 
   def 'should add scene to day'() {
-    given:
-    def newScene = createScene(mvc, [:])
-
     when:
-    patchDayRequest(mvc, dayId, [scenes: [newScene._links.self.href]])
-    def response = readDayScenes(mvc, dayId)
+    def response = createDayScene(mvc, dayId)
 
     then:
-    response.status == 200
-    def json = parseJson(response.contentAsByteArray)
-    with(json) {
-      _embedded.scenes[0].id == newScene.id
+    response.status == 201
+    with(parseJson(response.contentAsByteArray)) {
+      id
+      finished == false
     }
   }
 
@@ -96,7 +91,7 @@ class DayApiTest extends Specification {
     response mvc.perform(delete("/days/${id}"))
   }
 
-  static def readDayScenes(MockMvc mvc, String id) {
-    response mvc.perform(get("/days/${id}/scenes"))
+  static def createDayScene(MockMvc mvc, String id) {
+    response mvc.perform(post("/days/${id}/scenes"))
   }
 }

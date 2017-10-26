@@ -8,8 +8,8 @@ import { translate, Trans } from 'react-i18next'
 
 class Day extends Component {
 
-  handleNewDayClick = () => this.props.onNewDay()  
-
+  handleNewDayClick = () => this.props.onNewDay()
+  
   render() {
     const { day, t } = this.props
     return (

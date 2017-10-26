@@ -72,11 +72,6 @@ class SceneApiTest extends Specification {
     response.status == 204
   }
 
-  static def createScene(MockMvc mvc, def scene) {
-    def response = createSceneRequest(mvc, scene)
-    parseJson response.contentAsByteArray
-  }
-
   static def createSceneRequest(MockMvc mvc, def scene) {
     String json = new JsonBuilder(scene)
     response mvc.perform(post('/scenes').content(json))

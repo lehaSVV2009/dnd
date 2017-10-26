@@ -9,6 +9,6 @@ class Day(val counter : Int = 1) {
     val id: String? = null
 
     @DBRef
-    val scenes : List<Scene>  = listOf()
+    val scenes : MutableList<Scene>  = mutableListOf()
 
 }

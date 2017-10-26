@@ -29,3 +29,11 @@ export const fetchLastDay = () => {
 export const createDay = () => {
   return client.post(`/days`)
 }
+
+export const createScene = ({ dayId }) => {
+  return client.post(`/days/${dayId}/scenes`)
+}
+
+export const stopScene = ({ sceneId }) => {
+  return client.post(`/scenes/${sceneId}/stop`)
+}
