@@ -26,25 +26,32 @@ class DayApiTest extends Specification {
   String dayId
 
   def 'should create day'() {
-    given:
-    def day = [
-        name: 'Day 1'
-    ]
-
     when:
-    def response = createDayRequest(mvc, day)
+    def response = createDayRequest(mvc)
 
     then:
     response.status == 201
     def json = parseJson(response.contentAsByteArray)
     with(json) {
       id
-      name == 'Day 1'
+      counter >= 1
     }
 
     cleanup:
     if (json && json.id) {
       dayId = json.id
+    }
+  }
+
+  def 'should read last day'() {
+    when:
+    def response = readLastDay(mvc)
+
+    then:
+    response.status == 200
+    def json = parseJson(response.contentAsByteArray)
+    with(json) {
+      id == this.dayId
     }
   }
 
@@ -72,9 +79,12 @@ class DayApiTest extends Specification {
     response.status == 204
   }
 
-  static def createDayRequest(MockMvc mvc, def day) {
-    String json = new JsonBuilder(day)
-    response mvc.perform(post('/days').content(json))
+  static def createDayRequest(MockMvc mvc) {
+    response mvc.perform(post('/days'))
+  }
+
+  static def readLastDay(MockMvc mvc) {
+    response mvc.perform(get('/days/last'))
   }
 
   static def patchDayRequest(MockMvc mvc, String id, def day) {

@@ -21,3 +21,11 @@ export const fetchHero = ({ id }) => {
 export const patchHero = ({ id, hero }) => {
   return client.patch(`/heroes/${id}`, hero)
 }
+
+export const fetchLastDay = () => {
+  return client.get(`/days/last`)
+}
+
+export const createDay = () => {
+  return client.post(`/days`)
+}

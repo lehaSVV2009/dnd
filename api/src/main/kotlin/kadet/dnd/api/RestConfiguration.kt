@@ -1,6 +1,9 @@
 package kadet.dnd.api
 
+import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.data.projection.ProjectionFactory
+import org.springframework.data.projection.SpelAwareProxyProjectionFactory
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter
 

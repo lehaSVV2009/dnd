@@ -39,7 +39,7 @@ class TurnApiTest extends Specification {
     ])
 
     def turn = [
-        owner : newHero._links.self.href,
+        owner : "/heroes/${newHero.id}",
         action: newTalent._links.self.href,
     ]
 

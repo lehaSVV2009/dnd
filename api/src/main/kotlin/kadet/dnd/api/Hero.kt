@@ -43,5 +43,5 @@ class Hero {
      * Talents of a hero
      */
     @DBRef
-    val talents: Set<Talent> = setOf()
+    var talents: Set<Talent> = setOf()
 }

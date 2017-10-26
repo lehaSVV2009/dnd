@@ -6,15 +6,6 @@ import { Trans } from 'react-i18next'
 import TalentCard from './TalentCard'
 
 export default class TalentsList extends Component {
-  handleUseTalent = (index) => {
-    // TODO make immutable
-    const talents = this.props.talents.map(talent => JSON.parse(JSON.stringify(talent)));
-    talents[index].used++
-    this.props.onUseTalent({
-      talents
-    })
-  }
-
   render() {
     const { talents } = this.props;
 
@@ -32,7 +23,6 @@ export default class TalentsList extends Component {
               key={index}
               index={index}
               talent={talent}
-              onUseTalent={this.handleUseTalent}
             />
           ))
         }

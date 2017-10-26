@@ -43,6 +43,9 @@ class HeroApiTest extends Specification {
             languages  : [
                 'Общий', 'Эльфийский'
             ]
+        ],
+        talents  : [
+            [title: 'New talent']
         ]
     ]
 
@@ -62,6 +65,7 @@ class HeroApiTest extends Specification {
       profile.experience == 5500
       profile.languages.contains 'Общий'
       profile.languages.contains 'Эльфийский'
+      talents[0].title == 'New talent'
     }
 
     cleanup:
@@ -90,37 +94,6 @@ class HeroApiTest extends Specification {
     }
   }
 
-  def 'should add talent to hero'() {
-    given:
-    def newTalent = createTalent(mvc, [
-        title: 'New talent'
-    ])
-
-    when:
-    patchHeroRequest(mvc, heroId, [talents: [newTalent._links.self.href]])
-    def response = readHeroTalentsRequest(mvc, heroId)
-
-    then:
-    response.status == 200
-    def json = parseJson(response.contentAsByteArray)
-    with(json) {
-      _embedded.talents[0].title == 'New talent'
-    }
-  }
-
-  def 'should remove talent from hero'() {
-    when:
-    patchHeroRequest(mvc, heroId, [talents: []])
-    def response = readHeroTalentsRequest(mvc, heroId)
-
-    then:
-    response.status == 200
-    def json = parseJson(response.contentAsByteArray)
-    with(json) {
-      _embedded.talents == []
-    }
-  }
-
   def 'should delete hero'() {
     when:
     def response = deleteHeroRequest(mvc, heroId)
@@ -146,9 +119,5 @@ class HeroApiTest extends Specification {
 
   static def deleteHeroRequest(MockMvc mvc, String id) {
     response mvc.perform(delete("/heroes/${id}"))
-  }
-
-  static def readHeroTalentsRequest(MockMvc mvc, String id) {
-    response mvc.perform(get("/heroes/${id}/talents"))
   }
 }
