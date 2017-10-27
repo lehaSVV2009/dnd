@@ -15,11 +15,11 @@ class Turn {
      * Who used the talent
      */
     @DBRef
-    val owner: Hero? = null
+    var owner: Hero? = null
 
     /**
      * Used talent
      */
     @DBRef
-    val action: Talent? = null
+    var action: Talent? = null
 }

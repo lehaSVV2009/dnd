@@ -9,6 +9,6 @@ class Scene(var finished: Boolean = false) {
     val id: String? = null
 
     @DBRef
-    val turns : List<Turn>  = listOf()
+    var turns : MutableList<Turn>  = mutableListOf()
 
 }

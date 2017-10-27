@@ -89,11 +89,6 @@ class TurnApiTest extends Specification {
     response.status == 204
   }
 
-  static def createTurn(MockMvc mvc, def turn) {
-    def response = createTurnRequest(mvc, turn)
-    parseJson response.contentAsByteArray
-  }
-
   static def createTurnRequest(MockMvc mvc, def turn) {
     String json = new JsonBuilder(turn)
     response mvc.perform(post('/turns').content(json))

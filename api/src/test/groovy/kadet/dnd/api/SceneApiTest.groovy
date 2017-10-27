@@ -9,9 +9,9 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Stepwise
 
+import static kadet.dnd.api.HeroApiTest.createHero
 import static kadet.dnd.api.TestUtils.parseJson
 import static kadet.dnd.api.TestUtils.response
-import static kadet.dnd.api.TurnApiTest.createTurn
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch
@@ -27,6 +27,8 @@ class SceneApiTest extends Specification {
 
   @Shared
   String sceneId
+  @Shared
+  String heroId
 
   def 'should create scene'() {
     given:
@@ -50,17 +52,44 @@ class SceneApiTest extends Specification {
 
   def 'should add turn to scene'() {
     given:
-    def newTurn = createTurn(mvc, [:])
+    def hero = createHero(mvc, [
+        talents  : [
+            [limit_type: 'Неограниченный'],
+            [limit_type: 'На сцену'],
+            [limit_type: 'На день'],
+        ]
+    ])
+    def talent = hero.talents[1]
+    def turn = [
+        owner: hero,
+        action: talent
+    ]
 
     when:
-    patchSceneRequest(mvc, sceneId, [turns: [newTurn._links.self.href]])
-    def response = readSceneTurns(mvc, sceneId)
+    def response = createSceneTurn(mvc, sceneId, turn)
 
     then:
     response.status == 200
-    def json = parseJson(response.contentAsByteArray)
-    with(json) {
-      _embedded.turns[0].id == newTurn.id
+    with(parseJson(response.contentAsByteArray)) {
+      id
+      it.owner.id == hero.id
+      it.action.id == talent.id
+    }
+
+    cleanup:
+    if (hero && hero.id) {
+      heroId = hero.id
+    }
+  }
+
+  def 'should read available talents after new turn'() {
+    when:
+    def response = readAvailableTalents(mvc, sceneId, heroId)
+
+    then:
+    response.status == 200
+    with(parseJson(response.contentAsByteArray)) {
+      it.size() == 2
     }
   }
 
@@ -86,7 +115,12 @@ class SceneApiTest extends Specification {
     response mvc.perform(delete("/scenes/${id}"))
   }
 
-  static def readSceneTurns(MockMvc mvc, String id) {
-    response mvc.perform(get("/scenes/${id}/turns"))
+  static def readAvailableTalents(MockMvc mvc, String id, String heroId) {
+    response mvc.perform(get("/scenes/${id}/heroes/${heroId}/availableTalents"))
+  }
+
+  static def createSceneTurn(MockMvc mvc, String id, def turn) {
+    String json = new JsonBuilder(turn)
+    response mvc.perform(post("/scenes/${id}/turns").content(json))
   }
 }
