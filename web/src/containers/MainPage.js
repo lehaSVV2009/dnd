@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import IconAccount from 'material-ui-icons/AccountCircle'
+import IconFight from 'material-ui-icons/FlashOn'
 import IconFire from 'material-ui-icons/Whatshot'
 import IconSchool from 'material-ui-icons/School'
 import { Trans } from 'react-i18next'
 
+import DayPage from './DayPage'
 import Footer from '../components/Footer'
 import PageWrapper from '../components/PageWrapper'
 import ProfilePage from './ProfilePage'
@@ -11,6 +13,7 @@ import SkillsPage from './SkillsPage'
 import TalentsPage from './TalentsPage'
 
 const iconAccount = <IconAccount/>
+const iconFight = <IconFight/>
 const iconFire = <IconFire/>
 const iconSchool = <IconSchool/>
 
@@ -22,10 +25,12 @@ export default class MainPage extends Component {
     }
   }
 
+  handleNewDay = (newJson) => this.props.onNewDay()  
   handleHeroChange = (newJson) => this.props.onHeroChange(newJson)
   handleAccountTabClick = () => this.setState({ page: 'profile' })
   handleSkillsTabClick = () => this.setState({ page: 'skills' })
   handleTalentsTabClick = () => this.setState({ page: 'talents' })
+  handleDayTabClick = () => this.setState({ page: 'day' })
   
   createFooterButtons = () => {
     return [{
@@ -40,6 +45,10 @@ export default class MainPage extends Component {
       icon: iconFire,
       onClick: this.handleTalentsTabClick,
       label: <Trans>Таланты</Trans>
+    }, {
+      icon: iconFight,
+      onClick: this.handleDayTabClick,
+      label: <Trans>Бой</Trans>
     }]
   }
 
@@ -72,8 +81,13 @@ export default class MainPage extends Component {
           {
             this.state.page === 'talents' &&
             <TalentsPage
-              talents={hero.talents}
-              onUseTalent={this.handleHeroChange}
+              talents={hero._embedded.talents}
+            />
+          }
+          {
+            this.state.page === 'day' &&
+            <DayPage
+              hero={hero}
             />
           }
         </PageWrapper>

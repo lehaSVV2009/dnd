@@ -23,12 +23,8 @@ class Profile {
     val image: String? = null
 
     /**
-     * Уровень от 1 до ..
-     */
-    val level: Int? = 1
-
-    /**
-     * Опыт
+     * From 0 to ....
+     * Level is calculated from experience
      */
     val experience: Int = 0
 
@@ -47,5 +43,5 @@ class Profile {
     /**
      * Известные языки
      */
-    val languages: List<String> = listOf()
+    val languages: Set<String> = setOf()
 }

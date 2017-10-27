@@ -21,3 +21,31 @@ export const fetchHero = ({ id }) => {
 export const patchHero = ({ id, hero }) => {
   return client.patch(`/heroes/${id}`, hero)
 }
+
+export const fetchLastDay = () => {
+  return client.get(`/days/last`)
+}
+
+export const createDay = () => {
+  return client.post(`/days`)
+}
+
+export const fetchLastScene = ({ dayId }) => {
+  return client.get(`/days/${dayId}/scenes/last`)
+}
+
+export const startScene = ({ dayId }) => {
+  return client.post(`/days/${dayId}/scenes`)
+}
+
+export const stopScene = ({ sceneId }) => {
+  return client.post(`/scenes/${sceneId}/stop`)
+}
+
+export const fetchAvailableTalents = ({ sceneId, heroId }) => {
+  return client.get(`/scenes/${sceneId}/heroes/${heroId}/availableTalents`)
+}
+
+export const makeMove = ({ sceneId, turn }) => {
+  return client.post(`/scenes/${sceneId}/turns`, turn)  
+}

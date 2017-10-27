@@ -6,20 +6,20 @@ import Typography from 'material-ui/Typography'
 
 export default class TalentCard extends Component {
 
-  handleUseTalentClick = () => this.props.onUseTalent(this.props.index)
+  handleUseClick = () => this.props.onUse(this.props.talent)
 
   render() {
-    const { talent } = this.props
+    const { onUse, talent } = this.props
 
     if (!talent) {
-      return (<Trans parent='span'>Таланты отсутствуют</Trans>)
+      return (<Trans parent='span'>Талант отсутствует</Trans>)
     }
 
     return (
       <Card>
         <CardContent>
           <Typography type='body1'>
-            {talent.limit_type}, {talent.used} <Trans parent='span'>использовано</Trans>
+            {talent.limit_type}
           </Typography>
           <Typography type='headline' component='h2'>
             {talent.title}
@@ -43,17 +43,18 @@ export default class TalentCard extends Component {
             <Trans parent='span'>Промах</Trans>: <b>{talent.miss}</b>
             <br/>
             <Trans parent='span'>Особенности</Trans>: <b>{talent.speciality}</b>
-            <br/>
-            <Trans parent='span'>Использовано</Trans>: <b>{talent.used}</b>
           </Typography>
+          {
+            onUse && 
+            <CardActions>
+              <Button
+                onClick={this.handleUseClick}
+              >
+                <Trans parent='span'>Пробую</Trans>
+              </Button>
+            </CardActions>
+          }
         </CardContent>
-        <CardActions>
-          <Button
-            onClick={this.handleUseTalentClick}
-          >
-            <Trans parent='span'>Пробую</Trans>
-          </Button>
-        </CardActions>
       </Card>
     )
   }
