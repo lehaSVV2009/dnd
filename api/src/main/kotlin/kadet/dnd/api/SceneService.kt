@@ -46,7 +46,7 @@ class SceneService(val sceneRepository: SceneRepository,
                 .toSet()
         // TODO add custom query
         val usedInDay = dayRepository.findAll()
-                .filter { it.scenes.contains(scene) }
+                .filter { it.scenes.map { it.id }.contains(scene.id) }
                 .flatMap { it.scenes }
                 .flatMap { it.turns }
                 .filter { it.owner?.id == hero.id }

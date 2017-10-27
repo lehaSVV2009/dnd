@@ -7,7 +7,7 @@ import TalentCard from './TalentCard'
 
 export default class TalentsList extends Component {
   render() {
-    const { talents } = this.props;
+    const { onUse, talents } = this.props;
 
     if (!Array.isArray(talents)) {
       return (<Trans>Таланты отсутствуют</Trans>)
@@ -23,6 +23,7 @@ export default class TalentsList extends Component {
               key={index}
               index={index}
               talent={talent}
+              onUse={onUse}
             />
           ))
         }

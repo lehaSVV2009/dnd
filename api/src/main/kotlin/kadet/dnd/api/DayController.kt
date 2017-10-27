@@ -47,4 +47,12 @@ class DayController(
         dayRepository.save(day)
         return scene
     }
+
+    @CrossOrigin
+    @GetMapping("/{dayId}/scenes/last")
+    fun fetchLastScene(@PathVariable dayId: String): Scene? {
+        val day = dayRepository.findOne(dayId) ?: throw ResourceNotFoundException()
+        return if (day.scenes.isEmpty()) null else day.scenes.last()
+    }
+
 }

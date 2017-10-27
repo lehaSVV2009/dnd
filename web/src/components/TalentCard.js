@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import Card, { CardContent } from 'material-ui/Card'
+import Button from 'material-ui/Button'
+import Card, { CardActions, CardContent } from 'material-ui/Card'
 import { Trans } from 'react-i18next'
 import Typography from 'material-ui/Typography'
 
 export default class TalentCard extends Component {
 
+  handleUseClick = () => this.props.onUse(this.props.talent)
+
   render() {
-    const { talent } = this.props
+    const { onUse, talent } = this.props
 
     if (!talent) {
-      return (<Trans parent='span'>Таланты отсутствуют</Trans>)
+      return (<Trans parent='span'>Талант отсутствует</Trans>)
     }
 
     return (
@@ -41,6 +44,16 @@ export default class TalentCard extends Component {
             <br/>
             <Trans parent='span'>Особенности</Trans>: <b>{talent.speciality}</b>
           </Typography>
+          {
+            onUse && 
+            <CardActions>
+              <Button
+                onClick={this.handleUseClick}
+              >
+                <Trans parent='span'>Пробую</Trans>
+              </Button>
+            </CardActions>
+          }
         </CardContent>
       </Card>
     )

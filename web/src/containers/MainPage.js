@@ -86,7 +86,9 @@ export default class MainPage extends Component {
           }
           {
             this.state.page === 'day' &&
-            <DayPage/>
+            <DayPage
+              hero={hero}
+            />
           }
         </PageWrapper>
         <Footer buttons={this.createFooterButtons()}/>
