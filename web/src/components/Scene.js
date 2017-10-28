@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import ReactAudioPlayer from 'react-audio-player'
 
 import SceneButton from './SceneButton'
 import TalentsList from './TalentsList'
@@ -26,6 +27,14 @@ export default class Scene extends Component {
           <TalentsList
             talents={availableTalents}
             onUse={this.handleUseTalent}
+          />
+        }
+        {
+          isSceneStarted &&
+          <ReactAudioPlayer
+            src='/epic.mp3'
+            autoPlay
+            loop
           />
         }
       </div>
