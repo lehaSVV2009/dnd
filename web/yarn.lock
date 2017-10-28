@@ -5366,6 +5366,10 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-audio-player@0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/react-audio-player/-/react-audio-player-0.6.2.tgz#8e147740cdaa06fe9aa9b2d8475f8bb489d75ae3"
+
 react-circular-progressbar@0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-circular-progressbar/-/react-circular-progressbar-0.5.0.tgz#74b67862431f3fa5e46f380874e4284f5f321b9a"
