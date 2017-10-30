@@ -1,8 +1,9 @@
 # Url to running API
 API=http://localhost:8080
 
-# Create hero
-http POST $API/heroes < hero.json
+# Create heroes
+http POST $API/heroes < alex.json
+http POST $API/heroes < eugen.json
 
 # Create 1st day
 http POST $API/days
