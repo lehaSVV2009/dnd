@@ -29,7 +29,6 @@ class TalentApiTest extends Specification {
   def 'create talent'() {
     given:
     def talent = [
-
         title       : 'Магическая стрела',
         description : 'Вы запускаете во врага серебристый разряд силового поля.',
         limit_type  : 'Неограниченный',

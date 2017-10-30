@@ -36,8 +36,6 @@ ext['spock.version'] = '1.1-groovy-2.4'
 dependencies {
   // Web app based on spring boot
   compile 'org.springframework.boot:spring-boot-starter-web'
-  // REST endpoint generating
-  compile 'org.springframework.boot:spring-boot-starter-data-rest'
   // MongoDB Spring integration
   compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
 

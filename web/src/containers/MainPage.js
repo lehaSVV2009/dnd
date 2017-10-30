@@ -32,7 +32,7 @@ export default class MainPage extends Component {
 
   handleHeroChange = (newJson) => {
     this.handleHeroResponse(
-      api.patchHero({ id: this.state.heroId, hero: newJson })      
+      api.patchHero({ id: this.state.heroId, hero: newJson })
     )
   }
 
@@ -42,13 +42,13 @@ export default class MainPage extends Component {
         this.setState({ hero: response.data, heroLoading: false, error: null })
       })
       .catch((error) => {
-        this.setState({ hero: null, heroLoading: false, error: error.toString() })            
+        this.setState({ hero: null, heroLoading: false, error: error.toString() })
       })
   }
 
   render() {
     const { hero, heroLoading, error } = this.state
-    
+
     // Show loading bar if HTTP request is not completed
     if (heroLoading) {
       return (<Trans>Загрузка</Trans>)
@@ -80,7 +80,7 @@ export default class MainPage extends Component {
           <DayPage heroId={hero.id}/>
         </Grid>
         <Grid item xs={12} md={4} lg={3}>
-          <Condition 
+          <Condition
             condition={hero.condition}
             protections={hero.protections}
             onChange={this.handleHeroChange}

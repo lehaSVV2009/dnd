@@ -9,12 +9,14 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Stepwise
 
+import static kadet.dnd.api.DayApiTest.createDayRequest
+import static kadet.dnd.api.DayApiTest.createDayScene
+import static kadet.dnd.api.DayApiTest.createDaySceneRequest
 import static kadet.dnd.api.HeroApiTest.createHero
 import static kadet.dnd.api.TestUtils.parseJson
 import static kadet.dnd.api.TestUtils.response
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
 
 @AutoConfigureMockMvc
@@ -31,11 +33,8 @@ class SceneApiTest extends Specification {
   String heroId
 
   def 'should create scene'() {
-    given:
-    def scene = [:]
-
     when:
-    def response = createSceneRequest(mvc, scene)
+    def response = createScene(mvc)
 
     then:
     response.status == 201
@@ -101,14 +100,9 @@ class SceneApiTest extends Specification {
     response.status == 204
   }
 
-  static def createSceneRequest(MockMvc mvc, def scene) {
-    String json = new JsonBuilder(scene)
-    response mvc.perform(post('/scenes').content(json))
-  }
-
-  static def patchSceneRequest(MockMvc mvc, String id, def scene) {
-    String json = new JsonBuilder(scene)
-    response mvc.perform(patch("/scenes/${id}").content(json))
+  static def createScene(MockMvc mvc) {
+    def dayJson = parseJson(createDayRequest(mvc).contentAsByteArray)
+    createDaySceneRequest(mvc, dayJson.id as String)
   }
 
   static def deleteSceneRequest(MockMvc mvc, String id) {

@@ -1,6 +1,5 @@
 package kadet.dnd.api
 
-import groovy.json.JsonBuilder
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
@@ -44,7 +43,7 @@ class DayApiTest extends Specification {
 
   def 'should read last day'() {
     when:
-    def response = readLastDay(mvc)
+    def response = readLastDayRequest(mvc)
 
     then:
     response.status == 200
@@ -56,7 +55,7 @@ class DayApiTest extends Specification {
 
   def 'should add scene to day'() {
     when:
-    def response = createDayScene(mvc, dayId)
+    def response = createDaySceneRequest(mvc, dayId)
 
     then:
     response.status == 201
@@ -78,20 +77,15 @@ class DayApiTest extends Specification {
     response mvc.perform(post('/days'))
   }
 
-  static def readLastDay(MockMvc mvc) {
+  static def readLastDayRequest(MockMvc mvc) {
     response mvc.perform(get('/days/last'))
-  }
-
-  static def patchDayRequest(MockMvc mvc, String id, def day) {
-    String json = new JsonBuilder(day)
-    response mvc.perform(patch("/days/${id}").content(json))
   }
 
   static def deleteDayRequest(MockMvc mvc, String id) {
     response mvc.perform(delete("/days/${id}"))
   }
 
-  static def createDayScene(MockMvc mvc, String id) {
+  static def createDaySceneRequest(MockMvc mvc, String id) {
     response mvc.perform(post("/days/${id}/scenes"))
   }
 }
