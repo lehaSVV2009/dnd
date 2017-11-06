@@ -65,7 +65,7 @@ export default class HeroPage extends Component {
       <div>
         <Profile
           profile={hero.profile}
-          onChange={this.handleChange}
+          onChange={this.handleHeroChange}
         />
         <br/>
         <Condition 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 import { withStyles } from 'material-ui/styles'
 import Avatar from 'material-ui/Avatar'
 import Chip from 'material-ui/Chip'
@@ -8,13 +9,16 @@ import TextField from 'material-ui/TextField'
 import { Trans } from 'react-i18next'
 
 const styles = theme => ({
+  searchInput: {
+    margin: 25,
+  },
   chip: {
     margin: theme.spacing.unit,
   },
-  row: {
+  center: {
     display: 'flex',
     justifyContent: 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   }
 })
 
@@ -54,11 +58,12 @@ class Collection extends Component {
       <div>
         <Subheader>{this.props.name}</Subheader>
         <TextField
+          className={classnames(classes.searchInput, classes.center)}
           label={<Trans>Поиск</Trans>}
           value={this.state.search}
           onChange={this.handleSearchTextChange}
         />
-        <div className={classes.row}>
+        <div className={classes.center}>
           {
             items.map((item, index) => (
               <Chip

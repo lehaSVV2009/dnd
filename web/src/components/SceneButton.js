@@ -1,7 +1,14 @@
 import React, {Component} from 'react'
+import { withStyles } from 'material-ui/styles'
 import Button from 'material-ui/Button'
 import Paper from 'material-ui/Paper'
 import { translate, Trans } from 'react-i18next'
+
+const styles = {
+  center: {
+    textAlign: 'center',
+  }
+}
 
 class SceneButton extends Component {
 
@@ -9,9 +16,9 @@ class SceneButton extends Component {
   handleStopScene = () => this.props.onStopScene()
 
   render() {
-    const { started } = this.props
+    const { classes, started } = this.props
     return (
-      <Paper>
+      <Paper className={classes.center}>
         <br/>
         {
           started
@@ -31,4 +38,4 @@ class SceneButton extends Component {
   }
 }
 
-export default translate()(SceneButton)
+export default translate()(withStyles(styles)(SceneButton))
