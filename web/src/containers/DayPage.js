@@ -146,6 +146,7 @@ export default class DayPage extends Component {
           onStopScene={this.handleStopScene}
           onUseTalent={this.handleUseTalent}
         />
+        <br/>
       </div>
     )
   }

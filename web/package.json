@@ -19,7 +19,6 @@
     "react-audio-player": "0.6.2",
     "react-circular-progressbar": "0.5.0",
     "react-dom": "16.0.0",
-    "react-flexbox-grid": "1.1.5",
     "react-i18next": "6.0.6",
     "react-scripts": "1.0.14"
   },

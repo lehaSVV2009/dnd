@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { Trans } from 'react-i18next'
 
 import * as api from '../API'
-import ProfilePage from './ProfilePage'
-import SkillsPage from './SkillsPage'
-import TalentsPage from './TalentsPage'
+import Condition from '../components/Condition'
+import Profile from '../components/Profile'
+import SkillsList from '../components/SkillsList'
+import TalentsList from '../components/TalentsList'
 
 export default class HeroPage extends Component {
   constructor(props) {
@@ -62,19 +63,23 @@ export default class HeroPage extends Component {
 
     return (
       <div>
-        <ProfilePage
+        <Profile
           profile={hero.profile}
+          onChange={this.handleChange}
+        />
+        <br/>
+        <Condition 
           condition={hero.condition}
-          protections={hero.protections}              
+          protections={hero.protections}
           onChange={this.handleHeroChange}
         />
         <br/>
-        <SkillsPage
+        <SkillsList
           characteristics={hero.characteristics}
           skills={hero.skills}
         />
         <br/>
-        <TalentsPage
+        <TalentsList
           talents={hero._embedded.talents}
         />
       </div>

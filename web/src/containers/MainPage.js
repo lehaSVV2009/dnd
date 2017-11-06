@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import Grid from 'material-ui/Grid'
 import { Trans } from 'react-i18next'
 
 import DayPage from './DayPage'
 import HeroPage from './HeroPage'
-import PageWrapper from '../components/PageWrapper'
 
 export default class MainPage extends Component {
   render() {
@@ -14,10 +14,17 @@ export default class MainPage extends Component {
     }
 
     return (
-      <PageWrapper>
-        <DayPage heroId={heroId}/>
-        <HeroPage heroId={heroId}/>
-      </PageWrapper>
+      <Grid container spacing={24}>
+        <Grid item xs={12} md={4} lg={3}>
+          <HeroPage heroId={heroId}/>
+        </Grid>
+        <Grid item xs={12} md={4} lg={6}>
+          <DayPage heroId={heroId}/>
+        </Grid>
+        <Grid item xs={12} md={4} lg={3}>
+          <HeroPage heroId={heroId}/>
+        </Grid>
+      </Grid>
     )
   }
 }
