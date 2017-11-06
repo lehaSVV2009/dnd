@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { Trans } from 'react-i18next'
 
-import * as api from './API'
-import MainPage from './containers/MainPage'
+import * as api from '../API'
+import ProfilePage from './ProfilePage'
+import SkillsPage from './SkillsPage'
+import TalentsPage from './TalentsPage'
 
-export default class Hero extends Component {
+export default class HeroPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      heroId: props.heroId,
       hero: null,
       heroLoading: false,
       error: null
@@ -20,13 +23,13 @@ export default class Hero extends Component {
   componentDidMount = () => {
     this.setState({ hero: null, heroLoading: true, error: null })
     this.handleHeroResponse(
-      api.fetchHero({ id: this.props.id })
+      api.fetchHero({ id: this.state.heroId })
     )
   }
 
   handleHeroChange = (newJson) => {
     this.handleHeroResponse(
-      api.patchHero({ id: this.props.id, hero: newJson })      
+      api.patchHero({ id: this.state.heroId, hero: newJson })      
     )
   }
 
@@ -58,10 +61,23 @@ export default class Hero extends Component {
     }
 
     return (
-      <MainPage 
-        hero={hero}
-        onHeroChange={this.handleHeroChange}
-      />
+      <div>
+        <ProfilePage
+          profile={hero.profile}
+          condition={hero.condition}
+          protections={hero.protections}              
+          onChange={this.handleHeroChange}
+        />
+        <br/>
+        <SkillsPage
+          characteristics={hero.characteristics}
+          skills={hero.skills}
+        />
+        <br/>
+        <TalentsPage
+          talents={hero._embedded.talents}
+        />
+      </div>
     )
   }
 }

@@ -9,7 +9,7 @@ export default class DayPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      hero: props.hero,
+      heroId: props.heroId,
       day: null,
       dayLoading: false,
       error: null,
@@ -81,7 +81,7 @@ export default class DayPage extends Component {
       sceneId: this.state.scene.id, 
       turn: {
         action: talent, 
-        owner: this.state.hero 
+        owner: { id: this.state.heroId }
       }
     }).then((response) => {
       this.reloadAvailableTalents()
@@ -107,7 +107,7 @@ export default class DayPage extends Component {
 
   reloadAvailableTalents = () => {
     this.setState({ availableTalents: [], availableTalentsLoading: true, error: null })
-    api.fetchAvailableTalents({ sceneId: this.state.scene.id, heroId: this.state.hero.id })
+    api.fetchAvailableTalents({ sceneId: this.state.scene.id, heroId: this.state.heroId })
       .then((response) => {
         this.setState({ availableTalents: response.data, availableTalentsLoading: false, error: null })
       })

@@ -7,12 +7,8 @@ export default class PageWrapper extends Component {
       <Row>
         <Col xs={12}>
           <Row center='xs'>
-            <Col lg={4} md={6} sm={8} xs={12}>
+            <Col lg={6} md={8} sm={10} xs={12}>
               {this.props.children}
-              <br/>
-              <br/>
-              <br/>
-              <br/>
             </Col>
           </Row>
         </Col>

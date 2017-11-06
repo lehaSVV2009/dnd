@@ -14,6 +14,10 @@ export const client = axios.create({
   validateStatus: validateStatus
 })
 
+export const fetchHeroes = () => {
+  return client.get('/heroes')
+}
+
 export const fetchHero = ({ id }) => {
   return client.get(`/heroes/${id}`)
 }
