@@ -2,6 +2,7 @@ version: '2.1'
 services:
 
   mongodb:
+    container_name: mongodb
     image: mongo:latest
     restart: on-failure
     ports:
@@ -14,7 +15,8 @@ services:
     command: mongod --smallfiles
 
   api:
-    build: api
+    container_name: api
+    image: lehasvv2009/dnd-api # rename to build:api for custom build
     restart: on-failure
     links:
       - mongodb:mongodb
@@ -27,8 +29,18 @@ services:
       - MONGO_URL=mongodb/test
 
   web:
-    build: web
-    ports:
-      - "80:80"
+    container_name: web
+    image: lehasvv2009/dnd-web # rename to build:web for custom build
+    restart: on-failure
     links:
       - api:api
+    ports:
+      - "80:80"
+
+  watchtower:
+    container_name: watchtower
+    image: v2tec/watchtower # automatically updates containers when new image is on docker hub
+    restart: on-failure
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: watchtower api --interval 30

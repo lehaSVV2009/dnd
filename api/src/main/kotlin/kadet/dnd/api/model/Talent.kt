@@ -1,4 +1,4 @@
-package kadet.dnd.api
+package kadet.dnd.api.model
 
 import org.springframework.data.annotation.Id
 
