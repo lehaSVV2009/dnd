@@ -1,6 +1,8 @@
 matrix:
   include:
     - language: java
+      jdk:
+        - oraclejdk8
       install:
         - true # Skip build with tests
       script:
