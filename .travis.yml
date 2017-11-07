@@ -9,13 +9,10 @@ matrix:
         - true # Skip build with tests
       script:
         - ./gradlew build -x test
-      deploy:
-        provider: script
-        script:
-          - cd api
-          - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-          - docker build -t lehasvv2009/dnd-api:latest .
-          - docker push lehasvv2009/dnd-api:latest
+        - cd api
+        - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+        - docker build -t lehasvv2009/dnd-api:latest .
+        - docker push lehasvv2009/dnd-api:latest
     - language: node_js
       node_js:
         - "8.0.0"
