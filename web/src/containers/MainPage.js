@@ -87,7 +87,7 @@ export default class MainPage extends Component {
           />
           <br/>
           <TalentsList
-            talents={hero._embedded.talents}
+            talents={hero.talents}
           />
         </Grid>
       </Grid>
