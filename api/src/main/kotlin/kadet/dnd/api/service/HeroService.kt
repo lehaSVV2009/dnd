@@ -29,9 +29,16 @@ class HeroService(val heroRepository: HeroRepository, val talentRepository: Tale
     }
 
     /**
+     * Fetch all heroes from db.
+     */
+    fun findAll(): List<Hero> {
+        return heroRepository.findAll()
+    }
+
+    /**
      * Partially update hero entity
      */
-    fun patch(hero: Hero): Hero {
+    fun patch(heroId: String, hero: Hero): Hero {
         throw NotImplementedError()
     }
 

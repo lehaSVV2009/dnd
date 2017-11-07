@@ -9,7 +9,6 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Stepwise
 
-import static kadet.dnd.api.TalentApiTest.createTalent
 import static kadet.dnd.api.TestUtils.parseJson
 import static kadet.dnd.api.TestUtils.response
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete
@@ -74,6 +73,16 @@ class HeroApiTest extends Specification {
     }
   }
 
+  def 'should fetch heroes'() {
+    when:
+    def response = fetchHeroesRequest(mvc)
+
+    then:
+    response.status == 200
+    def json = parseJson(response.contentAsByteArray) as List
+    json.last().id == heroId
+  }
+
   def 'should patch hero'() {
     given:
     def hero = [
@@ -110,6 +119,10 @@ class HeroApiTest extends Specification {
   static def createHeroRequest(MockMvc mvc, def hero) {
     String json = new JsonBuilder(hero)
     response mvc.perform(post('/heroes').content(json))
+  }
+
+  static def fetchHeroesRequest(MockMvc mvc) {
+    response mvc.perform(get('/heroes'))
   }
 
   static def patchHeroRequest(MockMvc mvc, String id, def partialHero) {
