@@ -10,11 +10,11 @@ import org.springframework.transaction.annotation.Transactional
 class HeroService(val heroRepository: HeroRepository, val talentRepository: TalentRepository) {
 
     /**
-     * Create new hero with all the characteristics and talents.
+     * Create new or update existing hero with all the characteristics and talents.
      * Id can be passed as a parameter.
      */
     @Transactional
-    fun create(hero: Hero): Hero {
+    fun save(hero: Hero): Hero {
         if (hero.talents.isNotEmpty()) {
             hero.talents = HashSet(talentRepository.save(hero.talents))
         }
@@ -33,13 +33,6 @@ class HeroService(val heroRepository: HeroRepository, val talentRepository: Tale
      */
     fun findAll(): List<Hero> {
         return heroRepository.findAll()
-    }
-
-    /**
-     * Partially update hero entity
-     */
-    fun patch(heroId: String, hero: Hero): Hero {
-        throw NotImplementedError()
     }
 
     /**

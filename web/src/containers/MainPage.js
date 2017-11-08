@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Grid from 'material-ui/Grid'
+import Immutable from 'seamless-immutable'
 import { Trans } from 'react-i18next'
 
 import * as api from '../API'
@@ -32,7 +33,7 @@ export default class MainPage extends Component {
 
   handleHeroChange = (newJson) => {
     this.handleHeroResponse(
-      api.patchHero({ id: this.state.heroId, hero: newJson })
+      api.updateHero({ id: this.state.heroId, hero: Immutable.merge(this.state.hero, newJson) })
     )
   }
 

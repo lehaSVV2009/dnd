@@ -5,9 +5,9 @@ import kadet.dnd.api.service.HeroService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
@@ -20,7 +20,7 @@ class HeroController(val heroService: HeroService) {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     fun create(@RequestBody hero: Hero): Hero {
-        return heroService.create(hero)
+        return heroService.save(hero)
     }
 
     @GetMapping
@@ -33,9 +33,9 @@ class HeroController(val heroService: HeroService) {
         return heroService.findOne(heroId)
     }
 
-    @PatchMapping("/{heroId}")
-    fun patch(@PathVariable heroId: String, @RequestBody hero: Hero): Hero {
-        return heroService.patch(heroId, hero)
+    @PutMapping("/{heroId}")
+    fun update(@RequestBody hero: Hero): Hero {
+        return heroService.save(hero)
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)

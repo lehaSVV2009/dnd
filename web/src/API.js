@@ -22,8 +22,8 @@ export const fetchHero = ({ id }) => {
   return client.get(`/heroes/${id}`)
 }
 
-export const patchHero = ({ id, hero }) => {
-  return client.patch(`/heroes/${id}`, hero)
+export const updateHero = ({ id, hero }) => {
+  return client.put(`/heroes/${id}`, hero)
 }
 
 export const fetchLastDay = () => {
