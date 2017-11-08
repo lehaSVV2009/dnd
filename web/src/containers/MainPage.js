@@ -31,9 +31,26 @@ export default class MainPage extends Component {
     )
   }
 
-  handleHeroChange = (newJson) => {
+  handleHeroChange = (updatedProperty) => {
+    const oldHero = this.state.hero
+    let newJson = oldHero
+
+    if (updatedProperty.profile) {
+      newJson = Immutable.merge(oldHero, {
+        profile: Immutable.merge(oldHero.profile, updatedProperty.profile)
+      })
+    } else if (updatedProperty.condition) {
+      newJson = Immutable.merge(oldHero, {
+        condition: Immutable.merge(oldHero.condition, updatedProperty.condition)
+      })
+    } else if (updatedProperty.protections) {
+      newJson = Immutable.merge(oldHero, {
+        protections: Immutable.merge(oldHero.protections, updatedProperty.protections)
+      })
+    }
+
     this.handleHeroResponse(
-      api.updateHero({ id: this.state.heroId, hero: Immutable.merge(this.state.hero, newJson) })
+      api.updateHero({ id: this.state.heroId, hero: newJson })
     )
   }
 

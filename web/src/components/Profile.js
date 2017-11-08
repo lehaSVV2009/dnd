@@ -1,16 +1,11 @@
 import React, {Component} from 'react'
-import Immutable from 'seamless-immutable'
 import { Trans } from 'react-i18next'
 
 import ProfileDescription from './ProfileDescription'
 import ProfileInfo from './ProfileInfo'
 
 export default class Profile extends Component {
-  handleChange = (updatedProperty) => {
-    if (updatedProperty.profile) {
-      this.props.onChange({ profile: Immutable.merge(this.props.profile, updatedProperty.profile) })
-    }
-  }
+  handleChange = (newJson) => this.props.onChange(newJson)
 
   render() {
     const { profile } = this.props

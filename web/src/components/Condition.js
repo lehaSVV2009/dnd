@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import DeathIcon from 'material-ui-icons/DeleteForever'
 import DefenceIcon from 'material-ui-icons/Security'
-import Immutable from 'seamless-immutable'
 import HeartIcon from 'material-ui-icons/Favorite'
 import HealingIcon from 'material-ui-icons/Healing'
 import MoneyIcon from 'material-ui-icons/AttachMoney'
@@ -25,13 +24,7 @@ export default class Condition extends Component {
     }
   }
 
-  handleChange = (updatedProperty) => {
-    if (updatedProperty.condition) {
-      this.props.onChange({ condition: Immutable.merge(this.props.condition, updatedProperty.condition) })
-    } else if (updatedProperty.protections) {
-      this.props.onChange({ protections: Immutable.merge(this.props.protections, updatedProperty.protections) })
-    }
-  }
+  handleChange = (newJson) => this.props.onChange(newJson)
 
   handleOpenMoneyDialog = () => {
     this.setState({
