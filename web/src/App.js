@@ -4,7 +4,7 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import { translate } from 'react-i18next'
 
 import * as I18N from './i18n'
-import MainPage from './containers/MainPage'
+import Routes from './Routes'
 
 const theme = createMuiTheme({
   palette: {
@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <MainPage heroId={window.location.hash ? window.location.hash.replace('#', '') : 'Alex'}/>
+        <Routes/>
       </MuiThemeProvider>
     )
   }

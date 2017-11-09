@@ -22,10 +22,29 @@ export default class HeroesPage extends Component {
     this.fetchHeroes()
   }
 
+  handlePlay = (hero) => {
+    this.props.onPlay(hero.id)
+  }
+
+  handleDelete = (hero) => {
+    this.setState({ heroesLoading: true, error: null })
+    this.deleteHero(hero.id)
+  }
+
   fetchHeroes = () => {
     api.fetchHeroes()
       .then((response) => {
         this.setState({ heroes: response.data, heroesLoading: false, error: null })
+      })
+      .catch((error) => {
+        this.setState({ heroes: null, heroesLoading: false, error: error.toString() })            
+      })
+  }
+
+  deleteHero = (id) => {
+    api.deleteHero({ id })
+      .then((response) => {
+        this.setState({ heroes: this.state.heroes.filter(hero => hero.id !== id), heroesLoading: false, error: null })
       })
       .catch((error) => {
         this.setState({ heroes: null, heroesLoading: false, error: error.toString() })            
@@ -50,7 +69,11 @@ export default class HeroesPage extends Component {
     }
 
     return (
-      <HeroList heroes={heroes}/>
+      <HeroList 
+        heroes={heroes}
+        onPlay={this.handlePlay}
+        onDelete={this.handleDelete}
+      />
     )
   }
 }

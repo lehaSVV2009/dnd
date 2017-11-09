@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Grid from 'material-ui/Grid'
 import Immutable from 'seamless-immutable'
+import Grid from 'material-ui/Grid'
 import { Trans } from 'react-i18next'
 
 import * as api from '../API'
@@ -10,7 +10,7 @@ import Profile from '../components/Profile'
 import SkillsList from '../components/SkillsList'
 import TalentsList from '../components/TalentsList'
 
-export default class MainPage extends Component {
+export default class HeroPage extends Component {
   constructor(props) {
     super(props)
     this.state = {

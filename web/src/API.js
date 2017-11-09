@@ -26,6 +26,10 @@ export const updateHero = ({ id, hero }) => {
   return client.put(`/heroes/${id}`, hero)
 }
 
+export const deleteHero = ({ id }) => {
+  return client.delete(`/heroes/${id}`)
+}
+
 export const fetchLastDay = () => {
   return client.get(`/days/last`)
 }
