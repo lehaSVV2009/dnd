@@ -1,21 +1,18 @@
 import React, { Component } from 'react'
+import { HashRouter, Route, Switch } from 'react-router-dom' 
 
-import HeroPage from './containers/HeroPage'
 import HeroesPage from './containers/HeroesPage'
+import HeroPage from './containers/HeroPage'
 
-// TODO use react router here
 export default class Routes extends Component {
-
-  toHeroPage = (id) => {
-    window.location.hash = id
-    this.forceUpdate()
-  }
-
   render() {
-    const hash = window.location.hash
-    if (hash) {
-      return (<HeroPage heroId={hash.replace('#', '')}/>)
-    }
-    return (<HeroesPage onPlay={this.toHeroPage}/>)
+    return (
+      <HashRouter>
+        <Switch>
+          <Route exact path='/' component={HeroesPage}/>
+          <Route path='/heroes/:id' component={HeroPage}/>
+        </Switch>
+      </HashRouter>
+    )
   }
 }

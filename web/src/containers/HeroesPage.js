@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Trans } from 'react-i18next'
+import { withRouter } from 'react-router-dom'
 
 import * as api from '../API'
 import HeroList from '../components/HeroList'
 
-export default class HeroesPage extends Component {
+class HeroesPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -23,7 +24,7 @@ export default class HeroesPage extends Component {
   }
 
   handlePlay = (hero) => {
-    this.props.onPlay(hero.id)
+    this.props.history.push(`/heroes/${hero.id}`)
   }
 
   handleDelete = (hero) => {
@@ -77,3 +78,5 @@ export default class HeroesPage extends Component {
     )
   }
 }
+
+export default withRouter(HeroesPage)

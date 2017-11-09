@@ -14,7 +14,7 @@ export default class HeroPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      heroId: props.heroId,
+      heroId: props.match.params.id,
       hero: null,
       heroLoading: false,
       error: null
