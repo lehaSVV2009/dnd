@@ -70,7 +70,7 @@ class HeroesPage extends Component {
     }
 
     return (
-      <HeroList 
+      <HeroList
         heroes={heroes}
         onPlay={this.handlePlay}
         onDelete={this.handleDelete}
