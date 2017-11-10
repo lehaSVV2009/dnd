@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
-import Button from 'material-ui/Button'
-import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card'
+import Card, { CardContent, CardMedia } from 'material-ui/Card'
+import DeleteIcon from 'material-ui-icons/Delete'
 import { FlipInY } from 'animate-css-styled-components'
-import Typography from 'material-ui/Typography'
 
-const styles = {
-  media: {
-    height: 240,
-  },
-}
+import ActionableTypography from './ActionableTypography'
+import PlayableImage from './PlayableImage'
+import SimpleTypography from './SimpleTypography'
+
+const styles = {}
 
 class HeroListItem extends Component {
 
@@ -18,31 +17,28 @@ class HeroListItem extends Component {
   handleDeleteClick = () => this.props.onDelete(this.props.hero)
 
   render() {
-    const { classes, hero } = this.props
+    const { hero } = this.props
     const { category, name, race } = hero.profile
+
     return (
       <FlipInY>
         <Card>
-          <CardMedia
-            className={classes.media}
-            image={`https://loremflickr.com/320/240/dnd,${Math.random() > 0.5 ? race : category}/all?random=${hero.id}`}
-          />
+          <CardMedia>
+            <PlayableImage
+              src={`https://loremflickr.com/320/240/dnd,${Math.random() > 0.5 ? race : category}/all?random=${hero.id}`}
+              onClick={this.handlePlayClick}
+            />
+          </CardMedia>
           <CardContent>
-          <Typography type='headline' component='h2'>
-            {name}
-          </Typography>
-          <Typography component='p'>
-            {category} - {race}
-          </Typography>
+            <ActionableTypography 
+              text={name}
+              icon={<DeleteIcon/>}
+              onClick={this.handleDeleteClick}
+            />
+            <SimpleTypography
+              text={`${category} - ${race}`} 
+            />
           </CardContent>
-          <CardActions>
-            <Button dense color='primary' onClick={this.handlePlayClick}>
-              Play
-            </Button>
-            <Button dense color='primary' onClick={this.handleDeleteClick}>
-              Delete
-            </Button>
-          </CardActions>
         </Card>
       </FlipInY>
     )
