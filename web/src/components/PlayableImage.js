@@ -3,36 +3,18 @@ import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import ButtonBase from 'material-ui/ButtonBase'
 import IconPlay from 'material-ui-icons/PlayCircleOutline'
-import Image from 'material-ui-image'
-import Typography from 'material-ui/Typography'
 
 const styles = theme => ({
-  root: {
-    marginTop: theme.spacing.unit * 4,
-    display: 'flex',
-    flexWrap: 'wrap',
-    minWidth: 300,
-    width: '100%',
-  },
   image: {
     position: 'relative',
-    height: 200,
+    height: 350,
     width: '100%',
-    [theme.breakpoints.down('sm')]: {
-      width: '100% !important', // Overrides inline-style
-      height: 100,
-    },
-    '&:hover': {
-      zIndex: 1,
-    },
     '&:hover $imageBackdrop': {
       opacity: 0.15,
     },
-    '&:hover $imageMarked': {
-      opacity: 0,
-    },
-    '&:hover $imageTitle': {
-      border: '4px solid currentColor',
+    '&:hover $icon': {
+      height: 70,
+      width: 70,
     },
   },
   imageButton: {
@@ -65,18 +47,9 @@ const styles = theme => ({
     opacity: 0.4,
     transition: theme.transitions.create('opacity'),
   },
-  imageTitle: {
-    position: 'relative',
-    padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 4}px ${theme.spacing.unit + 6}px`,
-  },
-  imageMarked: {
-    height: 3,
-    width: 18,
-    background: theme.palette.common.white,
-    position: 'absolute',
-    bottom: -2,
-    left: 'calc(50% - 9px)',
-    transition: theme.transitions.create('opacity'),
+  icon: {
+    height: 50,
+    width: 50,
   },
 })
 
@@ -101,15 +74,7 @@ class PlayableImage extends Component {
         />
         <div className={classes.imageBackdrop} />
         <div className={classes.imageButton}>
-          <Typography
-            component='h3'
-            type='subheading'
-            color='inherit'
-            className={classes.imageTitle}
-          >
-            Play
-            <div className={classes.imageMarked} />
-          </Typography>
+          <IconPlay className={classes.icon}/>
         </div>
       </ButtonBase>
     )
