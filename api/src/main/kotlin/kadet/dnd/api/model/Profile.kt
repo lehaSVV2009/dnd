@@ -29,19 +29,21 @@ class Profile {
     val experience: Int = 0
 
     /**
-     * Класс
+     * Wizard/warrior/...
      */
     // TODO move to enums
     val category: String? = null
 
     /**
-     * Раса
+     * Elf/dwarf/...
      */
     // TODO move to enums
     val race: String? = null
 
     /**
-     * Известные языки
+     * Known languages
      */
     val languages: Set<String> = setOf()
+
+    val additionalNotes: String? = null
 }
