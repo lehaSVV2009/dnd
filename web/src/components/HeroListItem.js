@@ -25,7 +25,7 @@ class HeroListItem extends Component {
         <Card>
           <CardMedia>
             <PlayableImage
-              src={`https://loremflickr.com/320/240/dnd,${Math.random() > 0.5 ? race : category}/all?random=${hero.id}`}
+              src={hero.profile.image}
               onClick={this.handlePlayClick}
             />
           </CardMedia>
