@@ -10,6 +10,13 @@ const theme = createMuiTheme({
   palette: {
     primary: cyan
   },
+  overrides: {
+    MuiButton: {
+      accent: {
+        background: 'linear-gradient(45deg, #81C784 30%, #AEEA00 90%)'
+      },
+    },
+  },
 })
 
 class App extends Component {

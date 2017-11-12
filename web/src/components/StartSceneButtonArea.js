@@ -7,7 +7,7 @@ import { Trans } from 'react-i18next'
 
 const styles = {
   startSceneButton: {
-    background: 'linear-gradient(45deg, #81C784 30%, #AEEA00 90%)',    
+    background: 'linear-gradient(45deg, #81C784 30%, #AEEA00 90%)',
   },
 }
 

@@ -1,22 +1,35 @@
 import React, { Component } from 'react'
+import { withStyles } from 'material-ui/styles'
 import Button from 'material-ui/Button'
 import Card, { CardActions, CardContent } from 'material-ui/Card'
 import { Trans } from 'react-i18next'
 import Typography from 'material-ui/Typography'
 
-export default class TalentCard extends Component {
+const styles = {
+  useButton: {
+    background: 'linear-gradient(45deg, #81C784 30%, #AEEA00 90%)',
+  },
+}
+
+class TalentCard extends Component {
 
   handleUseClick = () => this.props.onUse(this.props.talent)
 
+  getTalentColor = (talentLimitType) => {
+    return talentLimitType === 'На день'
+      ? '#FFCC80' : talentLimitType === 'На сцену'
+      ? '#FFF3E0' : 'white'
+  }
+
   render() {
-    const { onUse, talent } = this.props
+    const { classes, onUse, talent } = this.props
 
     if (!talent) {
       return (<Trans parent='span'>Талант отсутствует</Trans>)
     }
 
     return (
-      <Card>
+      <Card style={{ backgroundColor: this.getTalentColor(talent.limit_type) }}>
         <CardContent>
           <Typography type='body1'>
             {talent.limit_type}
@@ -47,9 +60,7 @@ export default class TalentCard extends Component {
           {
             onUse && 
             <CardActions>
-              <Button
-                onClick={this.handleUseClick}
-              >
+              <Button raised className={classes.useButton} onClick={this.handleUseClick}>
                 <Trans parent='span'>Пробую</Trans>
               </Button>
             </CardActions>
@@ -59,3 +70,5 @@ export default class TalentCard extends Component {
     )
   }
 }
+
+export default withStyles(styles)(TalentCard)

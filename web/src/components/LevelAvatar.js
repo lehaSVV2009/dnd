@@ -2,14 +2,13 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from 'material-ui/styles'
 import Avatar from 'material-ui/Avatar'
-import purple from 'material-ui/colors/purple'
 
 const styles = {
   avatar: {
     width: 60,
     height: 60,
     color: '#fff',
-    backgroundColor: purple[500]
+    background: 'linear-gradient(45deg, #81C784 30%, #AEEA00 90%)',
   }
 }
 
