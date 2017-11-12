@@ -5,7 +5,7 @@ import Chip from 'material-ui/Chip'
 import List, {ListItem, ListItemText} from 'material-ui/List'
 import ModeEditIcon from 'material-ui-icons/ModeEdit'
 
-export default class MoneyConditionItem extends Component {
+export default class EditableConditionItem extends Component {
 
   handleEditClick = () => this.props.onEditClick()
 

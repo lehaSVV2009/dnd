@@ -1,24 +1,23 @@
 import React, {Component} from 'react'
 import TextField from 'material-ui/TextField'
-import { Trans } from 'react-i18next'
 
 import FormDialog from './FormDialog'
 
-export default class MoneyFormDialog extends Component {
+export default class CounterFormDialog extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      addedMoney: 0
+      count: 0
     }
   }
 
-  handleMoneySave = () => {
-    this.props.onSave(Number.parseFloat(this.state.addedMoney))
+  handleCountSave = () => {
+    this.props.onSave(Number.parseFloat(this.state.count))
   }
 
-  handleMoneyChange = (event) => {
+  handleCountChange = (event) => {
     this.setState({
-      addedMoney: event.target.value 
+      count: event.target.value 
     })
   }
 
@@ -29,15 +28,15 @@ export default class MoneyFormDialog extends Component {
   render() {
     return (
       <FormDialog 
-        title={<Trans>Деньги</Trans>}
+        title={this.props.title}
         open={this.props.open}
         onClose={this.handleFormDialogClose}
-        onSave={this.handleMoneySave}
+        onSave={this.handleCountSave}
       >
         <TextField
-          label={<Trans>Добавить деньги</Trans>}
-          value={this.state.addedMoney}
-          onChange={this.handleMoneyChange}
+          label={this.props.label}
+          value={this.state.count}
+          onChange={this.handleCountChange}
           type='number'
         />
       </FormDialog>

@@ -12,15 +12,17 @@ import Subheader from 'material-ui/List/ListSubheader'
 import { Trans } from 'react-i18next'
 
 import ConditionItem from './ConditionItem'
-import MoneyConditionItem from './MoneyConditionItem'
-import MoneyFormDialog from './MoneyFormDialog'
+import CounterFormDialog from './CounterFormDialog'
+import EditableConditionItem from './EditableConditionItem'
 
 export default class Condition extends Component {
   constructor(props) {
     super(props)
     this.state = {
       money: props.condition.money,
-      openMoneyDialog: false
+      openMoneyDialog: false,
+      current_hit_points: props.condition.current_hit_points,
+      openHitPointsDialog: false,
     }
   }
 
@@ -49,6 +51,29 @@ export default class Condition extends Component {
     })
   }
 
+  handleOpenHitPointsDialog = () => {
+    this.setState({
+      openHitPointsDialog: true
+    })
+  }
+
+  handleSaveHitPoints = (value) => {
+    if (value) {
+      const newHitPoints = this.state.current_hit_points + value
+      this.handleChange({ condition: { current_hit_points: newHitPoints }})
+      this.setState({ 
+        openHitPointsDialog: false,
+        current_hit_points: newHitPoints,
+      })
+    }
+  }
+
+  handleCloseHitPointsDialog = () => {
+    this.setState({
+      openHitPointsDialog: false
+    })
+  }
+
   render() {
     const { condition, protections } = this.props
 
@@ -60,24 +85,33 @@ export default class Condition extends Component {
       <Paper>
         <Subheader><Trans>Состояние</Trans></Subheader>
         <br/>
-        <MoneyConditionItem
+        <EditableConditionItem
           name={<Trans>Деньги</Trans>}
           icon={<MoneyIcon />}
           value={this.state.money}
           onEditClick={this.handleOpenMoneyDialog}
         />
-        <MoneyFormDialog
+        {/* TODO move to editable condition item */}
+        <CounterFormDialog
+          title={<Trans>Деньги</Trans>}
+          label={<Trans>Добавить деньги</Trans>}
           open={this.state.openMoneyDialog}
           onSave={this.handleSaveMoney}
           onClose={this.handleCloseMoneyDialog}
         />
-        <ConditionItem
+        <EditableConditionItem
           name={<Trans>ХП</Trans>}
-          max={condition.max_hit_points}
-          min={-1}
-          value={condition.current_hit_points}
           icon={<HeartIcon />}
-          onChange={(value) => this.handleChange({ condition: { current_hit_points: value }})}
+          value={this.state.current_hit_points}
+          onEditClick={this.handleOpenHitPointsDialog}
+        />
+        {/* TODO move to editable condition item */}
+        <CounterFormDialog
+          title={<Trans>ХП</Trans>}
+          label={<Trans>Добавить ХП</Trans>}
+          open={this.state.openHitPointsDialog}
+          onSave={this.handleSaveHitPoints}
+          onClose={this.handleCloseHitPointsDialog}
         />
         <ConditionItem
           name={<Trans>Хил</Trans>}
