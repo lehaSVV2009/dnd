@@ -50,7 +50,7 @@ export default class HeroPage extends Component {
       })
     } else if (updatedProperty.extra) {
       newJson = Immutable.merge(oldHero, {
-        note: updatedProperty.extra
+        extra: updatedProperty.extra
       })
     }
 
