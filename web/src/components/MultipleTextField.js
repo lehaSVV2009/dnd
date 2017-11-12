@@ -29,7 +29,7 @@ class MultipleTextField extends Component {
   }
 
   render() {
-    const { classes, label, value } = this.props
+    const { classes, label } = this.props
 
     return (
       <TextField
