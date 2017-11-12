@@ -9,7 +9,10 @@ import Typography from 'material-ui/Typography'
 const styles = {
   image: {
     height: 50
-  }
+  },
+  flex: {
+    flex: 1,
+  },
 }
 
 class Header extends Component {
@@ -19,14 +22,16 @@ class Header extends Component {
       <div>
         <AppBar position='fixed' color='white'>
           <Toolbar>
-            <Typography type='title' color='inherit'>
+            <Typography type='title' color='inherit' className={classes.flex}>
               <br/>
               <Link to='/'>
                 <img className={classes.image} src='/logo.png' alt='logo'/>
               </Link>
             </Typography>
+            {this.props.children}
           </Toolbar>
         </AppBar>
+        <br/>
         <br/>
         <br/>
         <br/>

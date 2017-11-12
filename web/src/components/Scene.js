@@ -25,7 +25,6 @@ export default class Scene extends Component {
         {
           isSceneStarted &&
           <TalentsList
-            expanded
             onUse={this.handleUseTalent}
             talents={availableTalents}
           />

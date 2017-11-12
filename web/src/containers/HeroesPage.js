@@ -3,7 +3,7 @@ import { Trans } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 
 import * as api from '../API'
-import HeroList from '../components/HeroList'
+import HeroesPageLayout from './HeroesPageLayout'
 
 class HeroesPage extends Component {
   constructor(props) {
@@ -65,12 +65,8 @@ class HeroesPage extends Component {
       return (<div>{error}</div>)
     }
 
-    if (!heroes) {
-      return (<Trans>Герои отсутствует</Trans>)
-    }
-
     return (
-      <HeroList
+      <HeroesPageLayout
         heroes={heroes}
         onPlay={this.handlePlay}
         onDelete={this.handleDelete}
