@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { withStyles } from 'material-ui/styles'
 import Button from 'material-ui/Button'
+import { BounceIn } from 'animate-css-styled-components'
 import Paper from 'material-ui/Paper'
 import { Trans } from 'react-i18next'
 
@@ -48,13 +49,15 @@ class StartSceneButtonArea extends Component {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-        <Button
-          className={classes.startSceneButton}
-          raised
-          onClick={this.handleStartScene}
-        >
-          <Trans>Начать бой</Trans>
-        </Button>
+        <BounceIn delay='2s' duration='3s' iterationCount={50}>
+          <Button
+            className={classes.startSceneButton}
+            raised
+            onClick={this.handleStartScene}
+          >
+            <Trans>Начать бой</Trans>
+          </Button>
+        </BounceIn>
       </Paper>
     )
   }

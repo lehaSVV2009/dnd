@@ -21,7 +21,7 @@ class HeroListItem extends Component {
     const { category, name, race } = hero.profile
 
     return (
-      <FlipInY>
+      <FlipInY delay='1s'>
         <Card>
           <CardMedia>
             <PlayableImage

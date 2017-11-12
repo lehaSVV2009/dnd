@@ -5,6 +5,7 @@ import Button from 'material-ui/Button'
 import List, {ListItem, ListItemText} from 'material-ui/List'
 import Paper from 'material-ui/Paper'
 import { translate, Trans } from 'react-i18next'
+import { ZoomInUp } from 'animate-css-styled-components'
 
 class Day extends Component {
 
@@ -13,21 +14,23 @@ class Day extends Component {
   render() {
     const { day, t } = this.props
     return (
-      <Paper>
-        <List className='left'>
-          <ListItem>
-            <Avatar>
-              <IconBrightness2/>
-            </Avatar>
-            <ListItemText
-              primary={t('День') + ' ' + day.counter}
-            />
-            <Button raised onClick={this.handleNewDayClick}>
-              <Trans>Новый день</Trans>
-            </Button>
-          </ListItem>
-        </List>
-      </Paper>
+      <ZoomInUp delay='1s'>
+        <Paper>
+          <List className='left'>
+            <ListItem>
+              <Avatar>
+                <IconBrightness2/>
+              </Avatar>
+              <ListItemText
+                primary={t('День') + ' ' + day.counter}
+              />
+              <Button raised onClick={this.handleNewDayClick}>
+                <Trans>Новый день</Trans>
+              </Button>
+            </ListItem>
+          </List>
+        </Paper>
+      </ZoomInUp>
     )
   }
 }
