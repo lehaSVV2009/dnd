@@ -49,7 +49,7 @@ class StartSceneButtonArea extends Component {
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-        <BounceIn delay='2s' duration='3s' iterationCount={50}>
+        <BounceIn delay='1s' duration='3s' iterationCount={50}>
           <Button
             className={classes.startSceneButton}
             raised

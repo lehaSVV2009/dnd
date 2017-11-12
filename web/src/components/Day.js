@@ -14,7 +14,7 @@ class Day extends Component {
   render() {
     const { day, t } = this.props
     return (
-      <ZoomInUp delay='1s'>
+      <ZoomInUp>
         <Paper>
           <List className='left'>
             <ListItem>
