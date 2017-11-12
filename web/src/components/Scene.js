@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 
-import SceneButton from './SceneButton'
+import SceneButtonArea from './SceneButtonArea'
 import TalentsList from './TalentsList'
 
 export default class Scene extends Component {
@@ -16,7 +16,7 @@ export default class Scene extends Component {
     return (
       <div>
         <br/>
-        <SceneButton
+        <SceneButtonArea
           started={isSceneStarted}
           onStartScene={this.handleStartScene}
           onStopScene={this.handleStopScene}

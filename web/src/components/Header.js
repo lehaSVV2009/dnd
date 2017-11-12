@@ -16,16 +16,22 @@ class Header extends Component {
   render() {
     const { classes } = this.props
     return (
-      <AppBar position='static' color='white'>
-        <Toolbar>
-          <Typography type='title' color='inherit'>
-            <br/>
-            <Link to='/'>
-              <img className={classes.image} src='/logo.png' alt='logo'/>
-            </Link>
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <div>
+        <AppBar position='fixed' color='white'>
+          <Toolbar>
+            <Typography type='title' color='inherit'>
+              <br/>
+              <Link to='/'>
+                <img className={classes.image} src='/logo.png' alt='logo'/>
+              </Link>
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      </div>
     )  
   }
 }

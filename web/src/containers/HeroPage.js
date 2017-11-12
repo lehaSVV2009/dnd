@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
 import Immutable from 'seamless-immutable'
-import Grid from 'material-ui/Grid'
 import { Trans } from 'react-i18next'
 
 import * as api from '../API'
-import ExtraNote from '../components/ExtraNote'
-import DayPage from './DayPage'
-import Condition from '../components/Condition'
-import Profile from '../components/Profile'
-import SkillsList from '../components/SkillsList'
-import TalentsList from '../components/TalentsList'
+import HeroPageLayout from './HeroPageLayout'
 
 export default class HeroPage extends Component {
   constructor(props) {
@@ -32,25 +26,25 @@ export default class HeroPage extends Component {
     )
   }
 
-  handleHeroChange = (updatedProperty) => {
+  handleHeroChange = (updatedField) => {
     const oldHero = this.state.hero
     let newJson = oldHero
 
-    if (updatedProperty.profile) {
+    if (updatedField.profile) {
       newJson = Immutable.merge(oldHero, {
-        profile: Immutable.merge(oldHero.profile, updatedProperty.profile)
+        profile: Immutable.merge(oldHero.profile, updatedField.profile)
       })
-    } else if (updatedProperty.condition) {
+    } else if (updatedField.condition) {
       newJson = Immutable.merge(oldHero, {
-        condition: Immutable.merge(oldHero.condition, updatedProperty.condition)
+        condition: Immutable.merge(oldHero.condition, updatedField.condition)
       })
-    } else if (updatedProperty.protections) {
+    } else if (updatedField.protections) {
       newJson = Immutable.merge(oldHero, {
-        protections: Immutable.merge(oldHero.protections, updatedProperty.protections)
+        protections: Immutable.merge(oldHero.protections, updatedField.protections)
       })
-    } else if (updatedProperty.extra) {
+    } else if (updatedField.extra) {
       newJson = Immutable.merge(oldHero, {
-        extra: updatedProperty.extra
+        extra: updatedField.extra
       })
     }
 
@@ -82,43 +76,11 @@ export default class HeroPage extends Component {
       return (<div>{error}</div>)
     }
 
-    if (!hero) {
-      return (<Trans>Герой отсутствует</Trans>)
-    }
-
     return (
-      <Grid container spacing={24}>
-        <Grid item xs={12} md={4} lg={3}>
-          <Profile
-            profile={hero.profile}
-            onChange={this.handleHeroChange}
-          />
-          <br/>
-          <SkillsList
-            characteristics={hero.characteristics}
-            skills={hero.skills}
-          />
-        </Grid>
-        <Grid item xs={12} md={4} lg={6}>
-          <DayPage heroId={hero.id}/>
-        </Grid>
-        <Grid item xs={12} md={4} lg={3}>
-          <Condition
-            condition={hero.condition}
-            protections={hero.protections}
-            onChange={this.handleHeroChange}
-          />
-          <br/>
-          <ExtraNote
-            extra={hero.extra}
-            onChange={this.handleHeroChange}
-          />
-          <br/>
-          <TalentsList
-            talents={hero.talents}
-          />
-        </Grid>
-      </Grid>
+      <HeroPageLayout 
+        hero={hero}
+        onHandleHeroChange={this.handleHeroChange}
+      />
     )
   }
 }
