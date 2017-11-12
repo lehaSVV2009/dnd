@@ -44,4 +44,9 @@ class Hero {
      */
     @DBRef
     var talents: Set<Talent> = setOf()
+
+    /**
+     * Additional text about hero
+     */
+    val extra: String? = null
 }

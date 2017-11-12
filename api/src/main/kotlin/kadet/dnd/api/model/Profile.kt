@@ -45,5 +45,4 @@ class Profile {
      */
     val languages: Set<String> = setOf()
 
-    val additionalNotes: String? = null
 }

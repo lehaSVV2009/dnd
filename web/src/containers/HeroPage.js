@@ -4,6 +4,7 @@ import Grid from 'material-ui/Grid'
 import { Trans } from 'react-i18next'
 
 import * as api from '../API'
+import ExtraNote from '../components/ExtraNote'
 import DayPage from './DayPage'
 import Condition from '../components/Condition'
 import Profile from '../components/Profile'
@@ -46,6 +47,10 @@ export default class HeroPage extends Component {
     } else if (updatedProperty.protections) {
       newJson = Immutable.merge(oldHero, {
         protections: Immutable.merge(oldHero.protections, updatedProperty.protections)
+      })
+    } else if (updatedProperty.extra) {
+      newJson = Immutable.merge(oldHero, {
+        note: updatedProperty.extra
       })
     }
 
@@ -101,6 +106,11 @@ export default class HeroPage extends Component {
           <Condition
             condition={hero.condition}
             protections={hero.protections}
+            onChange={this.handleHeroChange}
+          />
+          <br/>
+          <ExtraNote
+            extra={hero.extra}
             onChange={this.handleHeroChange}
           />
           <br/>

@@ -50,7 +50,7 @@ export default class Condition extends Component {
   }
 
   render() {
-    const { condition, protections } = this.props;
+    const { condition, protections } = this.props
 
     if (!condition || !protections) {
       return (<Trans>Состояние отсутствует</Trans>)
