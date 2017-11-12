@@ -43,6 +43,8 @@ class TalentCard extends Component {
           <Typography component='p'>
             {talent.description}
             <br/>
+            <Trans parent='span'>Требования</Trans>: <b>{Array.isArray(talent.requirements) ? talent.requirements.join(', ') : ''}</b>
+            <br/>
             <Trans parent='span'>Дистанция</Trans>: <b>{talent.distance}</b>
             <br/>
             <Trans parent='span'>Цель</Trans>: <b>{talent.goal}</b>
