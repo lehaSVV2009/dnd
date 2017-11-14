@@ -1,6 +1,6 @@
 # Dungeons and Dragons app
 
-Web app for manipulating character sheets in Dungeons and Dragons
+Web app for manipulating character sheets and fights in Dungeons and Dragons
 
 ## Getting Started
 
@@ -10,11 +10,12 @@ Have fun :smile:
 
 These features are available:
 
-1. Show character info (profile, current condition, skills and characteristics, talents).
-2. Update character condition (experience, health, hill etc.)
-3. Simple search for skills and characteristics.
-4. Increment counter of used talents.
+1. Start and stop fight (with using talents).
+2. Show character info (profile, current condition, skills and characteristics, talents).
+3. Update character condition (experience, health, hill etc.)
+4. Simple search for skills and characteristics.
 5. Change localization (add `?lng=en`, `?lng=de` or `?lng=ru` to query param).
+6. Add additional information as a text.
 
 ### Prerequisites
 
