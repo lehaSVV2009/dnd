@@ -21,7 +21,8 @@ const styles = {
 class Header extends Component {
 
   handlePdfClick = () => {
-    window.open('/PlayBook.pdf', '_blank')
+    // Pdf on cdn
+    window.open('http://djugdtpirb6t3.cloudfront.net/PlayBook.pdf', '_blank')
   }
 
   render() {
