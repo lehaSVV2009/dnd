@@ -21,10 +21,16 @@
     "react-circular-progressbar": "0.5.0",
     "react-dom": "16.0.0",
     "react-i18next": "6.0.6",
+    "react-redux": "^5.0.6",
+    "react-redux-toastr": "^7.1.6",
     "react-router-dom": "4.2.2",
     "react-scripts": "1.0.14",
     "react-scroll": "1.6.4",
-    "seamless-immutable": "7.1.2",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.16.0",
+    "reselect": "^3.0.1",
+    "seamless-immutable": "^7.1.2",
     "styled-components": "2.2.3"
   },
   "scripts": {

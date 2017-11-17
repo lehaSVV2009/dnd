@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import cyan from 'material-ui/colors/cyan'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+import { Provider } from 'react-redux'
 import { translate } from 'react-i18next'
 
+import './i18n'
 import * as I18N from './i18n'
+import configureStore from './configureStore'
 import Routes from './Routes'
 
 const theme = createMuiTheme({
@@ -23,7 +26,9 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-        <Routes/>
+        <Provider store={configureStore()}>
+          <Routes/>
+        </Provider>
       </MuiThemeProvider>
     )
   }
