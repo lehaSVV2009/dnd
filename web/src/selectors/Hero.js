@@ -11,3 +11,8 @@ export const selectHeroesLoading = () => createSelector(
   heroSelector(),
   hero => hero.heroesLoading,
 )
+
+export const selectHeroDeleteLoading = () => createSelector(
+  heroSelector(),
+  hero => hero.heroDeleteLoading,
+)

@@ -2,34 +2,43 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { Trans } from 'react-i18next'
 import { withRouter } from 'react-router-dom'
 
+import Loading from '../components/Loading'
 import HeroesPageLayout from './HeroesPageLayout'
 import { deleteHeroRequest, loadHeroesRequest } from '../ducks/hero'
-import { selectHeroes, selectHeroesLoading } from '../selectors/Hero'
+import { selectHeroes, selectHeroDeleteLoading, selectHeroesLoading } from '../selectors/Hero'
 
 class HeroesPage extends Component {
 
+  /**
+   * Load all heroes before rendering
+   */
   componentDidMount = () => {
     this.props.loadHeroes()
   }
 
+  /**
+   * Hero item is clicked
+   */
   handlePlay = (hero) => {
-    // TODO should I add react-redux-router
+    // TODO should I add react-redux-router?
     this.props.history.push(`/heroes/${hero.id}`)
   }
 
+  /**
+   * Delete hero item button is clicked
+   */
   handleDelete = (hero) => {
     this.props.deleteHero(hero)
   }
 
   render() {
-    const { heroes, heroesLoading } = this.props
+    const { heroes, heroDeleteLoading, heroesLoading } = this.props
 
     // Show loading bar if HTTP request is not completed
-    if (heroesLoading) {
-      return (<Trans>Загрузка</Trans>)
+    if (heroesLoading || heroDeleteLoading) {
+      return (<Loading/>)
     }
 
     return (
@@ -45,6 +54,7 @@ class HeroesPage extends Component {
 const mapStateToProps = () => createStructuredSelector({
   heroes: selectHeroes(),
   heroesLoading: selectHeroesLoading(),
+  heroDeleteLoading: selectHeroDeleteLoading(),
 })
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ 
